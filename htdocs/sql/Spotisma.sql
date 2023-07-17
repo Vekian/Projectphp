@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: mysql
--- Generation Time: Jul 17, 2023 at 09:20 AM
+-- Generation Time: Jul 17, 2023 at 09:53 AM
 -- Server version: 10.6.12-MariaDB-1:10.6.12+maria~ubu2004-log
 -- PHP Version: 8.1.14
 
@@ -57,8 +57,20 @@ CREATE TABLE `comments` (
 CREATE TABLE `playlists` (
   `id` int(11) NOT NULL,
   `name` varchar(50) NOT NULL,
-  `id_song` int(11) NOT NULL,
   `id_user` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `playlist_songs`
+--
+
+CREATE TABLE `playlist_songs` (
+  `id` int(11) NOT NULL,
+  `id_song` int(11) NOT NULL,
+  `id_album` int(11) NOT NULL,
+  `id_playlist` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -111,8 +123,16 @@ ALTER TABLE `comments`
 --
 ALTER TABLE `playlists`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `id_song` (`id_song`),
   ADD KEY `id_user` (`id_user`);
+
+--
+-- Indexes for table `playlist_songs`
+--
+ALTER TABLE `playlist_songs`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_song` (`id_song`),
+  ADD KEY `playlist_to_album` (`id_album`),
+  ADD KEY `id_playlist` (`id_playlist`);
 
 --
 -- Indexes for table `songs`
@@ -150,6 +170,12 @@ ALTER TABLE `playlists`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `playlist_songs`
+--
+ALTER TABLE `playlist_songs`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `songs`
 --
 ALTER TABLE `songs`
@@ -176,8 +202,15 @@ ALTER TABLE `comments`
 -- Constraints for table `playlists`
 --
 ALTER TABLE `playlists`
-  ADD CONSTRAINT `song_to_playlist` FOREIGN KEY (`id_song`) REFERENCES `songs` (`id`),
   ADD CONSTRAINT `user_to_playlist` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`);
+
+--
+-- Constraints for table `playlist_songs`
+--
+ALTER TABLE `playlist_songs`
+  ADD CONSTRAINT `playlist_to_album` FOREIGN KEY (`id_album`) REFERENCES `albums` (`id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `playlist_to_playlist` FOREIGN KEY (`id_song`) REFERENCES `playlists` (`id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `playlist_to_song` FOREIGN KEY (`id_song`) REFERENCES `songs` (`id`) ON UPDATE CASCADE;
 
 --
 -- Constraints for table `songs`
