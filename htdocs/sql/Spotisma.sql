@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: mysql
--- Generation Time: Jul 17, 2023 at 09:53 AM
--- Server version: 10.6.12-MariaDB-1:10.6.12+maria~ubu2004-log
+-- Generation Time: Jul 17, 2023 at 02:36 PM
+-- Server version: 10.6.12-MariaDB-1:10.6.12+maria~ubu2004
 -- PHP Version: 8.1.14
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -20,8 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `Spotisma`
 --
-CREATE DATABASE IF NOT EXISTS `Spotisma` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `Spotisma`;
 
 -- --------------------------------------------------------
 
@@ -34,6 +32,15 @@ CREATE TABLE `albums` (
   `name` varchar(50) NOT NULL,
   `cover` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `albums`
+--
+
+INSERT INTO `albums` (`id`, `name`, `cover`) VALUES
+(1, 'Queen Hits', '/images/1601928_1_l.jpg'),
+(2, 'JuL Hits', '/images/jul-ses-fans-choisissent-la-cover-de-c-est-quand-qu-il-s-eteint_64563340cce77.jpg'),
+(3, 'Michael Jackson Hits', '/images/MJThriller25PRESSresize.jpg');
 
 -- --------------------------------------------------------
 
@@ -82,11 +89,30 @@ CREATE TABLE `playlist_songs` (
 CREATE TABLE `songs` (
   `id` int(11) NOT NULL,
   `name` varchar(60) NOT NULL,
-  `file` varchar(100) NOT NULL,
+  `file` varchar(255) NOT NULL,
   `cover` varchar(100) NOT NULL,
   `artist` varchar(30) NOT NULL,
   `id_album` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `songs`
+--
+
+INSERT INTO `songs` (`id`, `name`, `file`, `cover`, `artist`, `id_album`) VALUES
+(1, 'We Are The Champions', '/musics/Queen - We Are The Champions (Live Aid 1985).mp3', '/images/1601928_1_l.jpg', 'Queen', 1),
+(2, 'Radio Ga-Ga', '/musics/Queen - Radio Ga Ga (Live Aid 1985).mp3', '/images/1601928_1_l.jpg', 'Queen', 1),
+(3, 'I Want to Break Free', '/musics/Queen - I want to Break Free - Wembley 1986.mp3', '/images/1601928_1_l.jpg', 'Queen', 1),
+(4, 'Bohemian Rhapsody', '/musics/Queen – Bohemian Rhapsody (Official Video Remastered).mp3', '/images/1601928_1_l.jpg', 'Queen', 1),
+(5, 'Another One Bites The Dust', '/musics/Queen - Another One Bites the Dust (Official Video).mp3', '/images/1601928_1_l.jpg', 'Queen', 1),
+(6, 'Alors la zone', '/musics/JuL - Alors la zone _ Clip Officiel _ 2021.mp3', '/images/jul-ses-fans-choisissent-la-cover-de-c-est-quand-qu-il-s-eteint_64563340cce77.jpg', 'JUL', 2),
+(7, 'Entrainement', '/musics/JuL - Entrainement Clip officiel 2023.mp3', '/images/jul-ses-fans-choisissent-la-cover-de-c-est-quand-qu-il-s-eteint_64563340cce77.jpg', 'JuL', 2),
+(8, 'JCVD', '/musics/Jul - JCVD Clip Officiel 2019.mp3', '/images/jul-ses-fans-choisissent-la-cover-de-c-est-quand-qu-il-s-eteint_64563340cce77.jpg', 'JuL', 2),
+(9, 'On m\'appelle l\'OVNI', '/musics/Jul - On Mappelle Lovni Clip Officiel 2016.mp3', '/images/jul-ses-fans-choisissent-la-cover-de-c-est-quand-qu-il-s-eteint_64563340cce77.jpg', 'JuL', 2),
+(10, 'We Are The World', '/musics/Michael Jackson - We Are The World (HQ).mp3', '/images/MJThriller25PRESSresize.jpg', 'Michael Jackson', 3),
+(11, 'Billie Jean', '/musics/Billie Jean.mp3', '/images/MJThriller25PRESSresize.jpg', 'Michael Jackson', 3),
+(12, 'Thriller', '/musics/Michael Jackson - Thriller (Official 4K Video).mp3', '/images/MJThriller25PRESSresize.jpg', 'Michael Jackson', 3),
+(13, 'Beat It', '/musics/Michael Jackson - Beat It (Official 4K Video).mp3', '/images/MJThriller25PRESSresize.jpg', 'Michael Jackson', 3);
 
 -- --------------------------------------------------------
 
@@ -155,7 +181,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `albums`
 --
 ALTER TABLE `albums`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `comments`
@@ -179,7 +205,7 @@ ALTER TABLE `playlist_songs`
 -- AUTO_INCREMENT for table `songs`
 --
 ALTER TABLE `songs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `users`
