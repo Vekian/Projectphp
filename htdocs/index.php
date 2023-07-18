@@ -6,12 +6,13 @@ $songs = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 
 include_once('carousel.php');
+include_once('player.php');
 ?>
 
 </main>
 
 <?php
-include('comments.php')
+
 ?>
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
