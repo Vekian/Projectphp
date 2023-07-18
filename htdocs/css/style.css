@@ -1,11 +1,9 @@
 /* CSS pour le carrousel */
-.carousel-inner {
-    overflow: hidden;
-  }
-  
-  .carousel-item {
+.carousel-item {
     display: flex;
     justify-content: center;
+    align-items: center;
+    height: 100%;
   }
   
   .card {
@@ -23,6 +21,9 @@
     justify-content: center;
     transition: color 0.3s;
     font-size: 20px;
+    position: absolute;
+    margin-top: 300px;
+    transform: translateY(-50%);
   }
   
   .carousel-control-prev:hover,
