@@ -1,6 +1,6 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700);
 body {
-	background-color: rgb(237, 237, 237);
+	background-color: rgb(138, 135, 135);
 }
 #artist {
 	font-family: 'Open Sans', sans-serif;
@@ -297,3 +297,4 @@ input[type="range"]::-moz-range-thumb:hover, input[type="range"]::-moz-range-thu
 input[type="range"]::-ms-thumb:hover, input[type="range"]::-ms-thumb:focus, input[type="range"]::-ms-thumb:active {
 	background-color: rgb(239, 109, 188);
 }
+
