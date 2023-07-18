@@ -1,0 +1,11 @@
+.cover-image {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.audioBar {
+    width: 200px;
+    height: 200px;
+}
