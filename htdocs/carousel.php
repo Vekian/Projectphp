@@ -21,10 +21,6 @@ $songs = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <p><?php echo $artist; ?></p>
                     <img src="<?php echo $cover; ?>" alt="Cover" class="cover-image">
         <br>
-                    <audio controls class="audioBar">
-                        <source src="<?php echo $file; ?>" type="audio/mpeg">
-                        Votre navigateur ne prend pas en charge la balise audio.
-                    </audio>
                 </div>
             </div>
         <?php endforeach; ?>
