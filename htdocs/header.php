@@ -34,7 +34,7 @@ require_once('config/connection.php'); ?>
                 </li>');
             }
             else {
-                echo ('<li class="nav_item offset-2" ><h4>Vous êtes connectés en tant que ' . $_SESSION['LOGGED_USER'] . '<a href="process/logout.php">Se déconnecter</a></h4></li>');
+                echo ('<li class="nav_item offset-2" ><h4>Vous êtes connectés en tant que ' . $_SESSION['LOGGED_USER'] . '  <a href="process/logout.php">Se déconnecter</a></h4></li>');
             }
         ?>
     </ul>
@@ -86,6 +86,9 @@ require_once('config/connection.php'); ?>
         .then(function(data) {
             document.getElementById('formSign').innerHTML = "";
             document.getElementById('answer').innerHTML = data.name;
+            setTimeout(function() {
+                    window.location.reload();
+                }, 1000);
             })
     });
 </script>
