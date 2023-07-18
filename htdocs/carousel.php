@@ -4,39 +4,56 @@ $stmt = $baseSpotisma->query('SELECT * FROM songs');
 $songs = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+
 <div id="songCarousel" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
-        <?php foreach ($songs as $index => $song) : ?>
-            <?php
-            $name = $song['name'];
-            $artist = $song['artist'];
-            $cover = $song['cover'];
-            $file = $song['file'];
-            $activeClass = $index === 0 ? 'active' : '';
-            ?>
-
-            <div class="carousel-item <?php echo $activeClass; ?>">
-                <div class="carousel-content">
-                    <h3><?php echo $name; ?></h3>
-                    <p><?php echo $artist; ?></p>
-                    <img src="<?php echo $cover; ?>" alt="Cover" class="cover-image">
-        <br>
-                    <audio controls class="audioBar">
-                        <source src="<?php echo $file; ?>" type="audio/mpeg">
-                        Votre navigateur ne prend pas en charge la balise audio.
-                    </audio>
+        <?php $totalSongs = count($songs); ?>
+        <?php for ($i = 0; $i < $totalSongs; $i += 3) : ?>
+            <div class="carousel-item <?php if ($i === 0) echo 'active'; ?>">
+                <div class="row">
+                    <?php for ($j = $i; $j < min($i + 3, $totalSongs); $j++) : ?>
+                        <?php $song = $songs[$j]; ?>
+                        <div class="col-md-4">
+                            <div class="card" data-id="<?php echo $song['id']; ?>">
+                                <img src="<?php echo $song['cover']; ?>" class="card-img-top" alt="Cover">
+                                <div class="card-body">
+                                    <h5 class="card-title"><?php echo $song['name']; ?></h5>
+                                    <p class="card-text"><?php echo $song['artist']; ?></p>
+                                    <audio controls>
+                                        <source src="<?php echo $song['file']; ?>" type="audio/mpeg">
+                                        Votre navigateur ne prend pas en charge la balise audio.
+                                    </audio>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endfor; ?>
                 </div>
             </div>
-        <?php endforeach; ?>
+        <?php endfor; ?>
     </div>
 
-    <button class="carousel-control-prev" type="button" data-bs-target="#songCarousel" data-bs-slide="prev">
+    <a class="carousel-control-prev" href="#songCarousel" role="button" data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Précédent</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#songCarousel" data-bs-slide="next">
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#songCarousel" role="button" data-bs-slide="next">
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Suivant</span>
-    </button>
+        <span class="sr-only">Next</span>
+    </a>
 </div>
-?>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        let cards = document.querySelectorAll(".card");
+        cards.forEach(function(card) {
+            card.addEventListener("click", function() {
+                let songId = card.getAttribute("data-id");
+                // Utilisez la variable songId comme vous le souhaitez pour une utilisation ultérieure
+                console.log("ID de la chanson sélectionnée : " + songId);
+            });
+        });
+    });
+</script>

@@ -1,11 +1,66 @@
-.cover-image {
-    width: 200px;
+/* CSS pour le carrousel */
+.carousel-inner {
+    overflow: hidden;
+  }
+  
+  .carousel-item {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .card {
+    margin: 10px;
+  }
+  
+  .carousel-control-prev,
+  .carousel-control-next {
+    width: 30px;
+    height: 30px;
+    background-color: transparent;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.3s;
+    font-size: 20px;
+  }
+  
+  .carousel-control-prev:hover,
+  .carousel-control-next:hover {
+    color: #000;
+  }
+  
+  .carousel-control-prev-icon,
+  .carousel-control-next-icon {
+    color: #000;
+  }
+  
+  .carousel-indicators {
+    bottom: -40px;
+  }
+  
+  .carousel-indicators li {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.5);
+    transition: background-color 0.3s;
+  }
+  
+  .carousel-indicators .active {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+  
+  /* CSS pour les cartes audio */
+  .card-img-top {
     height: 200px;
     object-fit: cover;
-    object-position: center;
-}
-
-.audioBar {
-    width: 200px;
-    height: 200px;
-}
+  }
+  
+  .card-title {
+    margin-bottom: 0.5rem;
+  }
+  
+  .card-text {
+    margin-bottom: 0;
+  }
