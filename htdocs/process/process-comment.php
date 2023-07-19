@@ -1,10 +1,19 @@
 <?php
 include ('../config/connection.php');
 
-$insertComment = $baseSpotisma -> prepare ('INSERT INTO comments(score, id_user, id_quizz) VALUES (:score, :id_user, :id_quizz)');
-        $insertComment -> execute([
-            'score' => $score,
-            'id_user' => $iduser,
-            'id_quizz' => $idQuizz
-        ]);
+$data = json_decode(file_get_contents('php://input'), true);
+    $content = $data['content'];
+    $nameUser = $data['id'];
+    $idSong = $data['idSong'];
+
+    $stmt = $baseSpotisma->query('SELECT id FROM users WHERE name = "' . $nameUser . '"');
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+    $idUser =  $user['id'];
+
+$insertComment = $baseSpotisma -> prepare ('INSERT INTO comments(content, id_user, id_song) VALUES (:content, :id_user, :id_song)');
+$insertComment -> execute([
+        'content' => $content,
+        'id_user' => $idUser,
+        'id_song' => $idSong
+    ]);
 ?>

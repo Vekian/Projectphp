@@ -4,9 +4,6 @@ $stmt = $baseSpotisma->query('SELECT * FROM songs');
 $songs = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
-
 <div id="songCarousel" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
         <?php $totalSongs = count($songs); ?>
@@ -44,7 +41,7 @@ $songs = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </a>
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         let cards = document.querySelectorAll(".card");
