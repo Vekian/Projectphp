@@ -7,6 +7,7 @@ $songs = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 include_once('carousel.php');
 include_once('player.php');
+include_once('comments.php');
 ?>
 
 </main>

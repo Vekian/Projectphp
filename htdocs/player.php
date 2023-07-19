@@ -8,7 +8,7 @@
 				<h1 id="artist">loading</h1>
 				<h4 id="album">loading</h4>
 			</div>
-			<h2 id="song">loading</h2>
+			<h2 id="song" class="text-center">loading</h2>
 			<div class="button-items">
 				<audio id="music" preload="auto">
 				</audio>

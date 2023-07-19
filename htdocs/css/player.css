@@ -22,6 +22,8 @@ body {
 	font-weight: 600;
 	color: rgb(255, 255, 255);
 	cursor: default;
+	border-bottom: 1px solid white;
+	width: auto;
 }
 .player {
 	height: 140px;
@@ -33,7 +35,7 @@ body {
 	-moz-user-select: none;
 	-ms-user-select: none;
 	user-select: none;
-	top: 50%;
+	top: 80%;
 	left: 50%;
 	transform: translate(-50%, -50%);
 	-webkit-transform: translate(-50%, -50%);
