@@ -6,7 +6,7 @@
                                 WHERE id_song = "' . $idSong . '"');
     $comments = $stmt->fetchAll(PDO::FETCH_ASSOC);
     shuffle($comments);
-    echo("<div id='comment' class='text-center border col-8 offset-2 rounded p-2'>");
+    echo("<div id='comment' class='text-center border col-10 offset-2 rounded p-2'>");
     if (empty($comments)) {
         echo ("Il n'y a pas de commentaires sur cette chanson.");
     }

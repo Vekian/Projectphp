@@ -18,16 +18,14 @@ body {
 }
 #song {
 	font-family: 'Open Sans', sans-serif;
-	font-size: 18pt;
+	font-size: 15pt;
 	font-weight: 600;
 	color: rgb(255, 255, 255);
 	cursor: default;
-	border-bottom: 1px solid white;
-	width: auto;
 }
 .player {
 	height: 140px;
-	width: 1030px;
+	width: 530px;
 	background-color: rgb(30, 33, 37);
 	position: absolute;
 	-webkit-touch-callout: none;
@@ -35,8 +33,8 @@ body {
 	-moz-user-select: none;
 	-ms-user-select: none;
 	user-select: none;
-	top: 80%;
-	left: 50%;
+	top: 50%;
+	left: 15%;
 	transform: translate(-50%, -50%);
 	-webkit-transform: translate(-50%, -50%);
 	border-radius: 5px;
@@ -79,41 +77,38 @@ body {
   left: 59px;
 }
 
-#infos-left {
-	transform: translateY(25px);
-}
 .info h1 {
 	margin: 0 0 -10px;
-	margin-left: 180px;
-	width: 782px;
+	padding-top: 10px;
+	margin-left: 160px;
+	width: 282px;
 	overflow: hidden;
 	white-space: nowrap;
 	text-overflow: ellipsis;
 }
 .info h4 {
-	line-height: 20px;
+	line-height: 17px;
 	color: rgb(99, 99, 103);
-	margin-left: 180px;
-	margin-top : 5px;
-	width: 782px;
+	padding-top: 5px;
+	margin-left: 160px;
+	width: 282px;
 	overflow: hidden;
 	white-space: nowrap;
 	text-overflow: ellipsis;
 }
 .info h2 {
-	margin-left: 680px;
-	width: 782px;
+	margin-left: 160px;
+	width: 282px;
 	overflow: hidden;
 	white-space: nowrap;
 	text-overflow: ellipsis;
-	transform: translateY(-20px);
 }
 
 .button-items {
-	margin-left: 180px;
+	margin-left: 160px;
 }
 #slider {
-	width: 782px;
+	width: 282px;
 	height: 4px;
 	background: rgb(21, 21, 24);
 	border-radius: 2px;
@@ -136,13 +131,12 @@ body {
 	color: rgb(99, 99, 103);
 	line-height: 0;
 	font-size: 9pt;
-	margin-left: 750px;
+	margin-left: 250px;
 	transform: translateY(20px);
 	font-family: Arial, Sans-Serif;
 }
 .controls {
 	margin-top: 15px;
-    margin-left : 50px;
 }
 .controls svg:nth-child(2) {
 	margin-left: 5px;
@@ -150,7 +144,8 @@ body {
 }
 #play {
 	padding: 0 3px;
-	width: 130px;
+	margin-bottom: 10px;
+	width: 80px;
 	height: 30px;
 	x: 0px;
 	y: 0px;
@@ -202,7 +197,7 @@ body {
 	width: 130px;
 	height: 30px;
 	position: absolute;
-	margin-left: -141px;
+	margin-left: -111px;
 	cursor: pointer;
 }
 #pause rect {
@@ -221,13 +216,13 @@ body {
 	cursor: pointer;
 }
 .slider {
-	width: 280px;
+	width: 120px;
 	position: absolute;
 	display: inline-block;
-	margin: 4px 0 0 150px;
+	margin: 4px 0 0 50px;
 }
 .slider .volume{
-	width: 269px;
+	width: 109px;
 	height: 4px;
 	background: rgba(239, 109, 188, 0.3);
 	border-top-left-radius: 2px;
