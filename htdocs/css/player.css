@@ -1,6 +1,6 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700);
 body {
-	background-color: rgb(237, 237, 237);
+	background-color: rgb(138, 135, 135);
 }
 #artist {
 	font-family: 'Open Sans', sans-serif;
@@ -33,13 +33,14 @@ body {
 	-moz-user-select: none;
 	-ms-user-select: none;
 	user-select: none;
-	top: 50%;
-	left: 50%;
+	top: 80%;
+	left: 40%;
 	transform: translate(-50%, -50%);
 	-webkit-transform: translate(-50%, -50%);
 	border-radius: 5px;
 	border-top-left-radius: 100px;
 	border-bottom-left-radius: 100px;
+
 }
 .player ul {
 	list-style: none;
@@ -297,3 +298,4 @@ input[type="range"]::-moz-range-thumb:hover, input[type="range"]::-moz-range-thu
 input[type="range"]::-ms-thumb:hover, input[type="range"]::-ms-thumb:focus, input[type="range"]::-ms-thumb:active {
 	background-color: rgb(239, 109, 188);
 }
+

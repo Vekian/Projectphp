@@ -7,7 +7,7 @@ require_once('config/connection.php'); ?>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Spotisma</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/player.css">
 </head>
@@ -15,32 +15,36 @@ require_once('config/connection.php'); ?>
     <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar</a>
+    <a class="navbar-brand" href="index.php">Spot'Isma</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
-      <ul class="navbar-nav">
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
-          </a>
-          <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <form class="d-flex my-2 my-lg-0" action="#" method="POST">
+                <input class="mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-warning" type="submit">Rechercher</button>
+            </form>
         </li>
+    <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
         <?php 
             if (!isset($_SESSION['LOGGED_USER'])) {
-                echo ('<li class="nav-item offset-4">
+                echo ('<li class="nav-item">
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                     Login
                 </button>
             </li>');
             }
             else {
-                echo ('<li class="nav_item offset-2" ><h4>Vous êtes connectés en tant que ' . $_SESSION['LOGGED_USER'] . '  <a href="process/logout.php">Se déconnecter</a></h4></li>');
+                echo('<li class="nav-item dropdown ml-5 " id="compte">
+                <a class="nav-link dropdown-toggle me-auto" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  ' . $_SESSION['LOGGED_USER'] . '
+                </a>
+                <ul class="dropdown-menu dropdown-menu-dark bg-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                    <li><a class="dropdown-item text-light" href="admin.php">Ajouter une musique</a></li>
+                    <li><a class="dropdown-item text-light" href="process/logout.php">Se déconnecter</a></h4></li></li>
+                </ul>
+              </li>');
             }
         ?>
       </ul>

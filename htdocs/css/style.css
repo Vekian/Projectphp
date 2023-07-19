@@ -22,8 +22,8 @@
     transition: color 0.3s;
     font-size: 20px;
     position: absolute;
-    margin-top: 300px;
-    transform: translateY(-50%);
+    margin-top: 200px;
+    margin-left: 0px;
   }
   
   .carousel-control-prev:hover,
