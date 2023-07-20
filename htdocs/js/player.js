@@ -81,7 +81,6 @@ function fondue() {
 	music.volume = 0;
 	const fondue = setInterval(function(){ 
 		music.volume += (volume.value * 0.2);
-		console.log(music.volume);
 		countTimer ++;
 		if (countTimer === 5) {
 			countTimer = 0;
