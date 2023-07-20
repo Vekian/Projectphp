@@ -1,6 +1,12 @@
 <?php 
 session_start();
-require_once('config/connection.php'); ?>
+require_once('config/connection.php');
+if(isset($_SESSION['LOGGED_USER'])) {
+    $stmtAdmin = $baseSpotisma->query('SELECT admin FROM users WHERE name = "' . $_SESSION['LOGGED_USER'] . '"');
+    $user = $stmtAdmin->fetch(PDO::FETCH_ASSOC);
+    $idAdmin =  $user['admin'];
+};
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -42,9 +48,11 @@ require_once('config/connection.php'); ?>
                 <a class="nav-link dropdown-toggle me-auto" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   ' . $_SESSION['LOGGED_USER'] . '
                 </a>
-                <ul class="dropdown-menu dropdown-menu-dark bg-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-                    <li><a class="dropdown-item text-light" href="admin.php">Ajouter une musique</a></li>
-                    <li><a class="dropdown-item text-light" href="process/logout.php">Se déconnecter</a></h4></li></li>
+                <ul class="dropdown-menu dropdown-menu-dark bg-dark" aria-labelledby="navbarDarkDropdownMenuLink">');
+                    if($idAdmin === 1) {
+                        echo('<li><a class="dropdown-item text-light" href="admin.php">Ajouter une musique</a></li>');
+                    };
+                echo('<li><a class="dropdown-item text-light" href="process/logout.php">Se déconnecter</a></h4></li></li>
                 </ul>
               </li>');
             }

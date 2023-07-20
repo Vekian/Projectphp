@@ -3,6 +3,7 @@
 $stmt = $baseSpotisma->query('SELECT * FROM songs');
 $songs = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
+
 <div class="container-fluid">
     <div class="row">
         <div class="col-9">
@@ -51,6 +52,39 @@ $songs = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </div>
 </div>
 
+
+<script>
+    let songId = "";
+    document.addEventListener("DOMContentLoaded", function() {
+        let cards = document.querySelectorAll(".card");
+        cards.forEach(function(card) {
+            card.addEventListener("click", function(e) {
+                songId = card.getAttribute("data-id");
+                if (e.target.value === "inputToAddPlaylist") {
+                    e.stopPropagation();
+                    document.getElementById('idSongInput').value = songId;
+                }
+                else {
+                playMusic(songId);
+                getComments(songId);
+                displayComment.innerHTML = '<button type="button" class="btn btn-outline-warning btn-dark col-4" data-bs-toggle="modal" data-bs-target="#commentModal">Un ptit com\' ?</button></div>';
+            }});
+        });
+    });
+    
+    
+</script>
+
+<?php
+    $nameUser = $_SESSION['LOGGED_USER'];
+    $stmt = $baseSpotisma->query('SELECT id FROM users WHERE name = "' . $nameUser . '"');
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+    $idUser =  $user['id'];
+
+    $stmtPlaylists = $baseSpotisma->query('SELECT * FROM playlists WHERE id_user = "' . $idUser . '"');
+    $playlistsData = $stmtPlaylists->fetchAll(PDO::FETCH_ASSOC);
+?>
+
 <div class="modal fade" id="addPlaylistModal" tabindex="-1" aria-labelledby="addPlaylistModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content bg-dark text-light">
@@ -59,29 +93,22 @@ $songs = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <button type="button" class="btn-close bg-dark" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                Add to playlist.
+                <form action="process/insertSongPlaylist.php" method="POST">
+                    <label for="namePlaylist">Choisissez votre playlist</label>
+                    <select id="namePlaylist" name="namePlaylist">
+                    <?php
+                        foreach($playlistsData as $playlistData) {
+                            echo('<option value="'. $playlistData['id'] . '"> ' . $playlistData["name"] .'</option>');
+                        }
+                    ?>
+                    </select>
+                    <input type="hidden" name="idSong" id="idSongInput" value="">
+                    <input type="hidden" name="idUser" value="<?php echo($idUser) ?>">
+                    <input type="submit" value="envoyer">
+                </form>
             </div>
         </div>
     </div>
 </div>
 
-<script>
-    let songId = "";
-    document.addEventListener("DOMContentLoaded", function() {
-        let cards = document.querySelectorAll(".card");
-        cards.forEach(function(card) {
-            card.addEventListener("click", function() {
-                songId = card.getAttribute("data-id");
-                playMusic(songId);
-                getComments(songId);
-                displayComment.innerHTML = '<button type="button" class="btn btn-outline-warning btn-dark col-4" data-bs-toggle="modal" data-bs-target="#commentModal">Un ptit com\' ?</button></div>';
-            });
-        });
-    });
-    let arrayOfButtonsPlaylist = document.getElementsByClassName('buttonAddPlaylist');
-    for (let button of arrayOfButtonsPlaylist) {
-		button.addEventListener("click", function(e) {
-            e.stopPropagation();
-		});}
-    
-</script>
+

@@ -23,8 +23,7 @@ if (response.ok) {
 	"mp3" : data.file
 	}
 	playlist.push(objetSong);
-	load();
-	_next()
+	_next();
 })
 }                
 
@@ -69,7 +68,15 @@ var timelineWidth = timeline.offsetWidth - playhead.offsetWidth;
 var visablevolume = document.getElementsByClassName("volume")[0];
 var repeatChecked = false;
 
-music.addEventListener("ended", _next, false);
+music.addEventListener("ended", function() {
+	if (repeatChecked) {
+		music.currentTime = 0; // Réinitialiser le temps de lecture au début de la chanson
+		music.play(); // Relancer la lecture
+	  }
+	else {
+		_next();
+	}
+}, false);
 music.addEventListener("timeupdate", timeUpdate, false);
 music.addEventListener("progress", 	bufferUpdate, false);
 load();
@@ -103,6 +110,7 @@ function repeat(){
 			});
 }
 repeat();
+
 function load(){
 	pauseButton.style.visibility = "hidden";
 	song.innerHTML = playlist[currentSong]['song'];
@@ -153,6 +161,11 @@ function timeUpdate() {
 	playPercent = timelineWidth * (music.currentTime / duration);
 	playhead.style.width = playPercent + "px";
 	timer.innerHTML = formatSecondsAsTime(music.currentTime.toString());
+	if (repeatChecked) {
+		if ((music.currentTime / duration) >= 1) {
+			music.play();
+		};
+	};
 }
 function bufferUpdate() {
 	bufferPercent = timelineWidth * (music.buffered.end(0) / duration);
