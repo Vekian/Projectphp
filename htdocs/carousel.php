@@ -18,6 +18,9 @@ $songs = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                 <div class="card-body">
                                     <h5 class="card-title"><?php echo $song['nameSong']; ?></h5>
                                     <p class="card-text"><?php echo $song['artist']; ?></p>
+                                    <button type="button" class="btn btn-outline-warning btn-dark buttonAddPlaylist" data-bs-toggle="modal" data-bs-target="#addPlaylistModal">
+                                        Add to playlist
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -38,6 +41,21 @@ $songs = $stmt->fetchAll(PDO::FETCH_ASSOC);
 </div>
 
 
+
+<div class="modal fade" id="addPlaylistModal" tabindex="-1" aria-labelledby="addPlaylistModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content bg-dark text-light">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="addPlaylistModalLabel">Ajouter à une playlist</h1>
+                <button type="button" class="btn-close bg-dark" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Add to playlist.
+            </div>
+        </div>
+    </div>
+</div>
+
 <script>
     let songId = "";
     document.addEventListener("DOMContentLoaded", function() {
@@ -49,7 +67,12 @@ $songs = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 playMusic(songId);
                 getComments(songId);
                 displayComment.innerHTML = '<button type="button" class="btn btn-outline-warning btn-dark col-4" data-bs-toggle="modal" data-bs-target="#commentModal">Un ptit com\' ?</button></div>';
+            });
         });
-    });});
+    });
+    document.getElementsByClassName('buttonAddPlaylist')
+		.addEventListener("click", function(e) {
+			e.stopPropagation();
+		});
     
 </script>
