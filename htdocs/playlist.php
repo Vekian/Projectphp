@@ -1,7 +1,5 @@
 <?php
 include 'header.php';
-
-
     // Structure de base pour le bloc Playlist
     echo '<div class="playlist-block">';
     echo '<h2>Playlists</h2>';

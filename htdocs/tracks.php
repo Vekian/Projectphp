@@ -25,7 +25,7 @@ if (isset($_SESSION['LOGGED_USER'])) {
 
         // Afficher le nom de la playlist et le bouton pour afficher les chansons
         echo '<div class="playlist-item">';
-        echo '<button class="playlist-title" onclick="toggleSongs(' . $playlistId . ')">' . $playlistName . '</button>';
+        echo '<button class="playlist-title" onclick="toggleSongs(' . $playlistId . ')">' . $playlistName . '<i class="fa-solid fa-bars"></i></button>';
 
         // Récupérer les chansons associées à cette playlist
         $stmt = $baseSpotisma->query('SELECT songs.id AS song_id, songs.nameSong AS song_name, albums.nameAlbum AS album_name
@@ -53,16 +53,7 @@ if (isset($_SESSION['LOGGED_USER'])) {
 }
 ?>
 
-<script>
-function toggleSongs(playlistId) {
-  let playlistSongs = document.getElementById('playlist-songs-' + playlistId);
-  if (playlistSongs.style.display === 'none') {
-    playlistSongs.style.display = 'block';
-  } else {
-    playlistSongs.style.display = 'none';
-  }
-}
-</script>
+<script src="js/playlist.js"></script>
 
 
 
