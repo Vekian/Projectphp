@@ -28,9 +28,6 @@
         else if (songId == "") {
             displayComment.innerHTML = "Veuillez choisir une chanson pour en voir les commentaires";
         }
-        else{
-            displayComment.innerHTML = '<button type="button" class="btn btn-outline-warning btn-dark col-4" data-bs-toggle="modal" data-bs-target="#commentModal">Un ptit com\' ?</button></div>';
-        }
     </script>
     <div class="modal fade" id="commentModal" tabindex="-1" aria-labelledby="commentModalLabel" aria-hidden="true">
         <div class="modal-dialog">
