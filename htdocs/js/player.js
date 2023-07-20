@@ -236,7 +236,7 @@ previous.onclick = function(){
 }
 volume.oninput = function(){
 	music.volume = volume.value;
-	visablevolume.style.width = (269) * volume.value + "px";
+	visablevolume.style.width = (109) * volume.value + "px";
 }
 music.addEventListener("canplay", function () {
 	duration = music.duration;

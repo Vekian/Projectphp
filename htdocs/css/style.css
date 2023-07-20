@@ -65,3 +65,13 @@
   .card-text {
     margin-bottom: 0;
   }
+
+  #sectionComments {
+    margin-left: 15%;
+  }
+
+  .fa-trash {
+    background-color: white;
+    border: none;
+    padding: 0;
+  }

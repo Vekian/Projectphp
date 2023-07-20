@@ -1,13 +1,15 @@
+<!---
+	Modified From: https://codepen.io/kirkbyo/pen/YPOBEJ
+	Light Version: https://codepen.io/cmd430/pen/ZYqPea
+--->
 <div class="player">
 	<span id="arm"></span>
 	<ul>
 		<li class="artwork">
 		</li>
 		<li class="info">
-			<div id="infos-left">
-				<h1 id="artist">loading</h1>
-				<h4 id="album">loading</h4>
-			</div>
+			<h1 id="artist">loading</h1>
+			<h4 id="album">loading</h4>
 			<h2 id="song">loading</h2>
 			<div class="button-items">
 				<audio id="music" preload="auto">
