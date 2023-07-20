@@ -1,63 +1,60 @@
 <?php
-try {
-    $baseSpotisma = new PDO('mysql:host=127.0.0.1;dbname=Spotisma;charset=utf8', 'root');
-} catch (Exception $e) {
-    die('Erreur : ' . $e->getMessage());
-}
+// Vérifier si l'utilisateur est connecté avant de récupérer ses playlists
+if (isset($_SESSION['LOGGED_USER'])) {
+    $userId = $_SESSION['LOGGED_USER'];
 
-// Récupérer toutes les chansons disponibles
-$stmtSongs = $baseSpotisma->query('SELECT * FROM songs');
-$songsData = $stmtSongs->fetchAll(PDO::FETCH_ASSOC);
-
-// Récupérer toutes les playlists
-$stmtPlaylists = $baseSpotisma->query('SELECT 
-                                        p.id AS playlist_id,
-                                        p.name AS playlist_name,
-                                        u.name AS user_name
-                                    FROM
-                                        playlists p
-                                        INNER JOIN users u ON p.id_user = u.id');
-$playlistsData = $stmtPlaylists->fetchAll(PDO::FETCH_ASSOC);
-
-
-// Boucle pour afficher les playlists
-foreach ($playlistsData as $playlistData) {
-    $playlistId = $playlistData['playlist_id'];
-    $playlistName = $playlistData['playlist_name'];
-    $userName = $playlistData['user_name'];
-
-    // Afficher le nom de la playlist et le nom de l'utilisateur
-    echo '<div class="playlist-item">';
-    echo '<h3>' . $playlistName . ' (Créée par ' . $userName . ')</h3>';
-    echo '<ul>';
-
-    // Récupérer les chansons associées à cette playlist
-    $stmtPlaylistSongs = $baseSpotisma->prepare('SELECT s.id AS song_id, s.nameSong AS song_name, a.nameAlbum AS album_name
-                                                FROM songs s
-                                                LEFT JOIN albums a ON s.id_album = a.id
-                                                INNER JOIN playlist_songs ps ON s.id = ps.id_song
-                                                WHERE ps.id_playlist = :playlistId');
-    $stmtPlaylistSongs->bindParam(':playlistId', $playlistId);
-    $stmtPlaylistSongs->execute();
-    $playlistSongs = $stmtPlaylistSongs->fetchAll(PDO::FETCH_ASSOC);
-
-    // Afficher les chansons de la playlist avec le bouton de suppression
-    foreach ($playlistSongs as $song) {
-        echo '<li>' . $song['song_name'] . ' - ' . $song['album_name'];
-        echo ' <form action="/process/remove-song-from-playlist.php" method="POST" style="display: inline;">';
-        echo '<input type="hidden" name="playlist_id" value="' . $playlistId . '">';
-        echo '<input type="hidden" name="song_id" value="' . $song['song_id'] . '">';
-        echo '<button class="fa-solid fa-trash" id= "trashBtn"></button>';
-        echo '</form>';
-        echo '</li>';
+    try {
+        $baseSpotisma = new PDO('mysql:host=127.0.0.1;dbname=Spotisma;charset=utf8', 'root');
+    } catch (Exception $e) {
+        die('Erreur : ' . $e->getMessage());
     }
 
-    echo '</ul>';
+    // Récupérer l'ID de l'utilisateur connecté
+    $stmt = $baseSpotisma->query('SELECT id FROM users WHERE name = "' . $userId . '"');
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+    $idUser = $user['id'];
 
-    echo '</div>';
+    // Récupérer toutes les playlists de l'utilisateur connecté
+    $stmt = $baseSpotisma->query('SELECT * FROM playlists WHERE playlists.id_user = "' . $idUser . '"');
+    $playlists = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    // Boucle pour afficher les playlists de l'utilisateur connecté
+    foreach ($playlists as $playlist) {
+        $playlistId = $playlist['id'];
+        $playlistName = $playlist['name'];
+
+        // Afficher le nom de la playlist et le bouton pour afficher les chansons
+        echo '<div class="playlist-item">';
+        echo '<button class="playlist-title" onclick="toggleSongs(' . $playlistId . ')">' . $playlistName . '<i class="fa-solid fa-bars"></i></button>';
+
+        // Récupérer les chansons associées à cette playlist
+        $stmt = $baseSpotisma->query('SELECT songs.id AS song_id, songs.nameSong AS song_name, albums.nameAlbum AS album_name
+                                    FROM songs
+                                    JOIN playlist_songs ON songs.id = playlist_songs.id_song
+                                    LEFT JOIN albums ON songs.id_album = albums.id
+                                    WHERE playlist_songs.id_playlist = "' . $playlistId . '"');
+        $songs = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        // Afficher les chansons de la playlist dans une liste déroulante
+        echo '<ul id="playlist-songs-' . $playlistId . '" style="display:none;">';
+        foreach ($songs as $song) {
+            echo '<li>' . $song['song_name'] . ' - ' . $song['album_name'];
+            echo ' <form action="/process/remove-song-from-playlist.php" method="POST" style="display: inline;">';
+            echo '<input type="hidden" name="playlist_id" value="' . $playlistId . '">';
+            echo '<input type="hidden" name="song_id" value="' . $song['song_id'] . '">';
+            echo '<button class="fa-solid fa-trash" id="trashBtn"></button>';
+            echo '</form>';
+            echo '</li>';
+        }
+        echo '</ul>';
+
+        echo '</div>';
+    }
 }
-
-echo '</div>';
 ?>
+
+<script src="js/playlist.js"></script>
+
+
 
 

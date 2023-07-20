@@ -74,12 +74,7 @@
     margin-left: 65%;
   }
 
-  .fa-trash {
-    background-color: white;
-    border: none;
-    padding: 0;
+  .card-body {
+    height : 150px;
   }
 
-  .fa-trash:hover::before {
-    color: red; /* Vous pouvez changer la couleur ici */
-  }

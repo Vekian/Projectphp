@@ -4,41 +4,54 @@ $stmt = $baseSpotisma->query('SELECT * FROM songs');
 $songs = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
-<div id="songCarousel" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-inner" id="carousel-content">
-        <?php $totalSongs = count($songs); ?>
-        <?php for ($i = 0; $i < $totalSongs; $i += 3) : ?>
-            <div class="carousel-item <?php if ($i === 0) echo 'active'; ?>">
-                <div class="row col-9">
-                    <?php for ($j = $i; $j < min($i + 3, $totalSongs); $j++) : ?>
-                        <?php $song = $songs[$j]; ?>
-                        <div class="col-md-4">
-                            <div class="card" data-id="<?php echo $song['id']; ?>">
-                                <img src="<?php echo $song['cover']; ?>" class="card-img-top" alt="Cover">
-                                <div class="card-body">
-                                    <h5 class="card-title"><?php echo $song['nameSong']; ?></h5>
-                                    <p class="card-text"><?php echo $song['artist']; ?></p>
-                                    <button type="button" class="btn btn-outline-warning btn-dark buttonAddPlaylist" data-bs-toggle="modal" data-bs-target="#addPlaylistModal" value="inputToAddPlaylist">
-                                        Add to playlist
-                                    </button>
-                                </div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-9">
+            <div id="songCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner" id="carousel-content">
+                    <?php $totalSongs = count($songs); ?>
+                    <?php for ($i = 0; $i < $totalSongs; $i += 3) : ?>
+                        <div class="carousel-item <?php if ($i === 0) echo 'active'; ?>">
+                            <div class="row">
+                                <?php for ($j = $i; $j < min($i + 3, $totalSongs); $j++) : ?>
+                                    <?php $song = $songs[$j]; ?>
+                                    <div class="col-md-4">
+                                        <div class="card" data-id="<?php echo $song['id']; ?>">
+                                            <img src="<?php echo $song['cover']; ?>" class="card-img-top" alt="Cover">
+                                            <div class="card-body">
+                                                <h5 class="card-title"><?php echo $song['nameSong']; ?></h5>
+                                                <p class="card-text"><?php echo $song['artist']; ?></p>
+                                                <button type="button" class="btn btn-outline-warning btn-dark buttonAddPlaylist" data-bs-toggle="modal" data-bs-target="#addPlaylistModal">
+                                                    Add to playlist
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <?php endfor; ?>
                             </div>
                         </div>
                     <?php endfor; ?>
                 </div>
-            </div>
-        <?php endfor; ?>
-    </div>
 
-    <a class="carousel-control-prev" href="#songCarousel" role="button" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#songCarousel" role="button" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-    </a>
+                <a class="carousel-control-prev" href="#songCarousel" role="button" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#songCarousel" role="button" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="col-3">
+            <?php 
+            include 'playlist.php';
+            ?>
+        </div>
+    </div>
 </div>
+
 
 <script>
     let songId = "";
