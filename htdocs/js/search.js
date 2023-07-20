@@ -21,6 +21,10 @@ function search() {
     .then(function(data) {
         console.log(data);
         let songs = data;
+        if (songs.length === 0) {
+            document.getElementById('carousel-content').innerHTML = "Aucune chanson ne correspond à cette recherche";
+        }
+        else{
         // Supprimer le contenu existant du conteneur "carousel-content"
     document.getElementById('carousel-content').innerHTML = "";
 
@@ -97,6 +101,6 @@ function search() {
                 displayComment.innerHTML = '<button type="button" class="btn btn-outline-warning btn-dark col-4" data-bs-toggle="modal" data-bs-target="#commentModal">Un ptit com\' ?</button></div>';
             });
         });
-    });
+    }});
 }
 

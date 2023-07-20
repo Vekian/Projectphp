@@ -224,10 +224,7 @@ body {
 	padding: 0.5px;
 	cursor: pointer;
 }
-.expend svg:hover g polygon {
-	fill: rgb(239, 109, 188);
-	cursor: pointer;
-}
+
 .slider {
 	width: 120px;
 	position: absolute;
