@@ -5,7 +5,7 @@ $songs = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <div id="songCarousel" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-inner">
+    <div class="carousel-inner" id="carousel-content">
         <?php $totalSongs = count($songs); ?>
         <?php for ($i = 0; $i < $totalSongs; $i += 3) : ?>
             <div class="carousel-item <?php if ($i === 0) echo 'active'; ?>">
@@ -63,16 +63,16 @@ $songs = $stmt->fetchAll(PDO::FETCH_ASSOC);
         cards.forEach(function(card) {
             card.addEventListener("click", function() {
                 songId = card.getAttribute("data-id");
-                // Utilisez la variable songId comme vous le souhaitez pour une utilisation ultérieure
                 playMusic(songId);
                 getComments(songId);
                 displayComment.innerHTML = '<button type="button" class="btn btn-outline-warning btn-dark col-4" data-bs-toggle="modal" data-bs-target="#commentModal">Un ptit com\' ?</button></div>';
             });
         });
     });
-    document.getElementsByClassName('buttonAddPlaylist')
-		.addEventListener("click", function(e) {
-			e.stopPropagation();
-		});
+    let arrayOfButtonsPlaylist = document.getElementsByClassName('buttonAddPlaylist');
+    for (let button of arrayOfButtonsPlaylist) {
+		button.addEventListener("click", function(e) {
+            e.stopPropagation();
+		});}
     
 </script>
