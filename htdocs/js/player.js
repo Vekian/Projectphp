@@ -1,12 +1,42 @@
 /* Music 
 ======================================*/
+function playMusic(id) {
+	fetch('process/playMusic.php', {
+		method: "POST",
+		body: JSON.stringify(id)
+		}
+)
+
+.then(function(response) {
+if (response.ok) {
+	return response.json();
+} else {
+	throw new Error('Erreur lors de la requête AJAX');
+}
+})
+.then(function(data) {
+	let objetSong = {
+	"song" : data.nameSong,
+	"album" : data.nameAlbum,
+	"artist" : data.artist,
+	"artwork" : data.cover,
+	"mp3" : data.file
+	}
+	playlist.push(objetSong);
+	load();
+	_next()
+})
+}                
+
+
+
 var playlist = [
 	{
-		"song"    : "Billie Jean",
-		"album"   : "Michael Jackson Hits",
-		"artist"  : "Michael Jackson",
-		"artwork" : "/images/MJThriller25PRESSresize.jpg",
-		"mp3"     : "/musics/Billie Jean.mp3"
+		"song"    : "Sélectionner une chanson",
+		"album"   : "",
+		"artist"  : "",
+		"artwork" : "",
+		"mp3"     : ""
 	},
 ];
 
@@ -37,6 +67,7 @@ var bufferhead = document.getElementById("buffered");
 var artwork = document.getElementsByClassName("artwork")[0];
 var timelineWidth = timeline.offsetWidth - playhead.offsetWidth;
 var visablevolume = document.getElementsByClassName("volume")[0];
+var repeatChecked = false;
 
 music.addEventListener("ended", _next, false);
 music.addEventListener("timeupdate", timeUpdate, false);
@@ -45,6 +76,34 @@ load();
 
 /* Functions
 ======================================*/
+function fondue() {
+	var countTimer = 0;
+	music.volume = 0;
+	const fondue = setInterval(function(){ 
+		music.volume += (volume.value * 0.2);
+		console.log(music.volume);
+		countTimer ++;
+		if (countTimer === 5) {
+			countTimer = 0;
+			clearInterval(fondue);
+			 }
+	}, 1000);
+}
+
+function repeat(){
+	document.getElementById('btnRepeat')
+			.addEventListener('click', function(e) {
+				if (repeatChecked) {
+					e.target.style.color = '#ffffff';
+					repeatChecked = false;
+				}
+				else {
+					e.target.style.color = '#ef6dbc';
+					repeatChecked = true;
+				}
+			});
+}
+repeat();
 function load(){
 	pauseButton.style.visibility = "hidden";
 	song.innerHTML = playlist[currentSong]['song'];
@@ -148,6 +207,7 @@ music.addEventListener("play", function () {
 			Rotate();
 		}
 	}, 10);	
+	fondue();
 	if(armrot != -35){
 		arm.setAttribute("style", "transition: transform 800ms;");
 		arm.style.transform = 'rotate('+armrot+'deg)';

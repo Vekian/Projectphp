@@ -20,6 +20,7 @@
 				</div>
 				<p id="timer">0:00</p>
 				<div class="controls">
+				<button class="fa-solid fa-repeat me-2" id="btnRepeat"></button>
 					<span class="expend">
 						<svg id="previous" class="step-backward" viewBox="0 0 25 25" xml:space="preserve">
 							<g>

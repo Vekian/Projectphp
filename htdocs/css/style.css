@@ -3,6 +3,8 @@
     overflow: hidden;
   }
   
+
+
   .carousel-item {
     display: flex;
     justify-content: center;
@@ -16,8 +18,8 @@
   .carousel-control-next {
     width: 30px;
     height: 30px;
-    background-color: transparent;
-    border: none;
+    background-color: black;
+    
     display: flex;
     align-items: center;
     justify-content: center;
@@ -67,5 +69,5 @@
   }
 
   #sectionComments {
-    margin-left: 15%;
+    margin-left: 65%;
   }
