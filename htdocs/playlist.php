@@ -1,51 +1,31 @@
 <?php
-try {
-    $baseSpotisma = new PDO('mysql:host=127.0.0.1;dbname=Spotisma;charset=utf8', 'root');
-} catch (Exception $e) {
-    die('Erreur : ' . $e->getMessage());
-}
-
 include 'header.php';
 
-// Récupérer toutes les chansons disponibles
-$stmtSongs = $baseSpotisma->query('SELECT * FROM songs');
-$songsData = $stmtSongs->fetchAll(PDO::FETCH_ASSOC);
 
-// Récupérer toutes les playlists avec leurs chansons associées
-$stmtPlaylists = $baseSpotisma->query('SELECT 
-                                        p.id AS playlist_id,
-                                        p.name AS playlist_name,
-                                        u.name AS user_name,
-                                        s.id AS song_id,
-                                        s.nameSong AS song_name,
-                                        a.id AS album_id,
-                                        a.nameAlbum AS album_name
-                                    FROM
-                                        playlists p
-                                        INNER JOIN users u ON p.id_user = u.id
-                                        LEFT JOIN playlist_songs ps ON p.id = ps.id_playlist
-                                        LEFT JOIN songs s ON ps.id_song = s.id
-                                        LEFT JOIN albums a ON ps.id_album = a.id');
+    // Structure de base pour le bloc Playlist
+    echo '<div class="playlist-block">';
+    echo '<h2>Playlists</h2>';
+    echo '<div class="playlist-list">';
 
-$playlistsData = $stmtPlaylists->fetchAll(PDO::FETCH_ASSOC);
+    // Formulaire de création de playlist
+    echo '<div class="create-playlist-form">';
+    echo '<h3>Créer une nouvelle playlist</h3>';
+    echo '<form action="/process/insert-playlist.php" method="POST">';
+    echo '<label for="playlist-name">Nom de la playlist:</label>';
+    echo '<input type="text" id="playlist-name" name="playlist-name" required>';
+    echo '<button type="submit">Créer</button>';
+    echo '</form>';
+    echo '</div>';
 
-// Structure de base pour le bloc Playlist
-echo '<div class="playlist-block">';
-echo '<h2>Playlists</h2>';
-echo '<div class="playlist-list">';
+    echo '</div>';
 
-// Formulaire de création de playlist
-echo '<div class="create-playlist-form">';
-echo '<h3>Créer une nouvelle playlist</h3>';
-echo '<form action="/process/insert-playlist.php" method="POST">';
-echo '<label for="playlist-name">Nom de la playlist:</label>';
-echo '<input type="text" id="playlist-name" name="playlist-name" required>';
-echo '<button type="submit">Créer</button>';
-echo '</form>';
-echo '</div>';
 
 include 'tracks.php';
-
-echo '</div>';
 ?>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>
+
+
 
