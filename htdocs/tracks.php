@@ -32,7 +32,7 @@ foreach ($playlistsData as $playlistData) {
     echo '<ul>';
 
     // Récupérer les chansons associées à cette playlist
-    $stmtPlaylistSongs = $baseSpotisma->prepare('SELECT s.id AS song_id, s.name AS song_name, a.name AS album_name
+    $stmtPlaylistSongs = $baseSpotisma->prepare('SELECT s.id AS song_id, s.nameSong AS song_name, a.nameAlbum AS album_name
                                                 FROM songs s
                                                 LEFT JOIN albums a ON s.id_album = a.id
                                                 INNER JOIN playlist_songs ps ON s.id = ps.id_song

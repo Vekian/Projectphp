@@ -2,6 +2,8 @@
 include ('../config/connection.php');
 
 $data = json_decode(file_get_contents('php://input'), true);
+$answer = "";
+if (isset($data)) {
     $content = $data['content'];
     $nameUser = $data['id'];
     $idSong = $data['idSong'];
@@ -16,4 +18,11 @@ $insertComment -> execute([
         'id_user' => $idUser,
         'id_song' => $idSong
     ]);
+    
+    $answer = ('Merci pour le commentaire !');
+}
+else {
+    $answer = ("Ce commentaire est invalide");
+}
+echo (json_encode($answer));
 ?>

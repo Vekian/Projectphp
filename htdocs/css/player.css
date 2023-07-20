@@ -33,8 +33,8 @@ body {
 	-moz-user-select: none;
 	-ms-user-select: none;
 	user-select: none;
-	top: 80%;
-	left: 40%;
+	top: 74%;
+	left: 20%;
 	transform: translate(-50%, -50%);
 	-webkit-transform: translate(-50%, -50%);
 	border-radius: 5px;
@@ -115,10 +115,22 @@ body {
 	border-radius: 2px;
 	overflow: hidden;
 }
+
+#btnRepeat {
+	background-color: transparent;
+	color: #ffffff;
+	border : none;
+}
+
+#btnRepeat:hover {
+	color: #ef6dbc;
+}
+
+
 #slider #elapsed {
 	width: 0px;
 	height: 4px;
-	background: rgb(239, 109, 188);
+	background: #ef6dbc;
 	border-radius: 2px;
 }
 #slider #buffered {

@@ -1,4 +1,8 @@
 /* CSS pour le carrousel */
+.carousel-inner {
+    overflow: hidden;
+  }
+  
 .carousel-item {
     display: flex;
     justify-content: center;
@@ -6,7 +10,7 @@
     height: 100%;
   }
   
-  .card {
+.card {
     margin: 10px;
   }
   
@@ -14,8 +18,8 @@
   .carousel-control-next {
     width: 30px;
     height: 30px;
-    background-color: transparent;
-    border: none;
+    background-color: black;
+    
     display: flex;
     align-items: center;
     justify-content: center;
@@ -67,11 +71,15 @@
   }
 
   #sectionComments {
-    margin-left: 15%;
+    margin-left: 65%;
   }
 
   .fa-trash {
     background-color: white;
     border: none;
     padding: 0;
+  }
+
+  .fa-trash:hover::before {
+    color: red; /* Vous pouvez changer la couleur ici */
   }

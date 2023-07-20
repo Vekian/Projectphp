@@ -17,9 +17,9 @@ $stmtPlaylists = $baseSpotisma->query('SELECT
                                         p.name AS playlist_name,
                                         u.name AS user_name,
                                         s.id AS song_id,
-                                        s.name AS song_name,
+                                        s.nameSong AS song_name,
                                         a.id AS album_id,
-                                        a.name AS album_name
+                                        a.nameAlbum AS album_name
                                     FROM
                                         playlists p
                                         INNER JOIN users u ON p.id_user = u.id
