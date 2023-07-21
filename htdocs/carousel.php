@@ -18,15 +18,17 @@ $songs = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                     <div class="col-md-4">
                                         <div class="card" data-id="<?php echo $song['id']; ?>">
                                             <img src="<?php echo $song['cover']; ?>" class="card-img-top" alt="Cover">
-                                            <div class="card-body">
-                                                <h5 class="card-title"><?php echo $song['nameSong']; ?></h5>
-                                                <p class="card-text"><?php echo $song['artist']; ?></p>
-                                                <button type="button" class="btn btn-outline-warning btn-dark buttonAddPlaylist" data-bs-toggle="modal" data-bs-target="#addPlaylistModal" value="inputToAddPlaylist">
-                                                <i class="fa-solid fa-plus" id="playlistAdd"></i> Playlist
-                                                </button>
-                                                <button type="button" class="btn btn-outline-warning btn-dark buttonAddToList" value="inputToAddPlaylist">
-                                                    Lire ensuite
-                                                </button>
+                                            <div class="card-body d-flex flex-column text-center justify-content-center">
+                                                <h5 class="card-title "><?php echo $song['nameSong']; ?></h5>
+                                                <p class="card-text mb-5"><?php echo $song['artist']; ?></p>
+                                                <div id="buttonOfCard" >
+                                                    <button type="button" class="btn btn-outline-warning btn-dark buttonAddPlaylist col-5" data-bs-toggle="modal" data-bs-target="#addPlaylistModal" value="inputToAddPlaylist">
+                                                    <i class="fa-solid fa-plus" id="playlistAdd"></i> Playlist
+                                                    </button>
+                                                    <button type="button" class="btn btn-outline-warning btn-dark buttonAddToList col-5" value="inputToAddPlaylist">
+                                                        Lire ensuite
+                                                    </button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
