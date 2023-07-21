@@ -59,7 +59,7 @@
   
   /* CSS pour les cartes audio */
   .card-img-top {
-    height: 200px;
+    height: 230px;
     object-fit: cover;
   }
   
@@ -72,7 +72,7 @@
   }
 
   .card-body {
-    height: 180px;
+    height: 200px;
     background-color: rgb(120, 184, 245);
   }
 
