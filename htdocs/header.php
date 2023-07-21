@@ -23,7 +23,7 @@ if(isset($_SESSION['LOGGED_USER'])) {
     <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container">
-    <a class="navbar-brand" href="index.php">Spot'Isma</a>
+    <a class="navbar-brand text-light" href="index.php">Spot'Isma</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
