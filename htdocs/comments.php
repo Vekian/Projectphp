@@ -25,10 +25,10 @@
     <script>
         let displayComment = document.getElementById('displayPostComments');
         if ("<?php echo(!isset($_SESSION['LOGGED_USER']))?>" == true){
-            displayComment.innerHTML = "Veuillez vous connecter pour écrire un commentaire";
+            displayComment.innerHTML = "<div class='text-light'>Veuillez vous connecter pour écrire un commentaire</div>";
         }
         else if (songId == "") {
-            displayComment.innerHTML = "Veuillez choisir une chanson pour en voir les commentaires";
+            displayComment.innerHTML = "<div class='text-light'>Veuillez choisir une chanson pour en voir les commentaires</div>";
         }
     </script>
     <div class="modal fade" id="commentModal" tabindex="-1" aria-labelledby="commentModalLabel" aria-hidden="true">
@@ -74,13 +74,13 @@
         .then(function(data) {
             let sectionComments = document.getElementById('displayComments');
             if (data.length === 0) {
-                sectionComments.innerHTML = "Il n'y a pas de commentaires sur cette chanson.";
+                sectionComments.innerHTML = "<div class='text-light'>Il n'y a pas de commentaires sur cette chanson.</div>";
             }
             else {
             document.getElementById("listeOfComments").innerHTML = "";
             displayComment.innerHTML += '<button type="button" class="btn btn-outline-warning btn-dark col-8" data-bs-toggle="modal" data-bs-target="#listCommentModal">Voir plus de commentaires</button>';
             for (let comment of data) {
-                sectionComments.innerHTML = "<div class='col-12'>" + comment.name + " a écrit : " + comment.content + '  </div>';
+                sectionComments.innerHTML = "<div class='col-12 text-light'>" + comment.name + " a écrit : " + comment.content + '  </div>';
                 document.getElementById("listeOfComments").innerHTML += "<div class='border p-2'>" + comment.name + " a écrit : " + comment.content + "</div><br />";
             }}
         })
