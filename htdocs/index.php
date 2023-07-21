@@ -10,7 +10,9 @@ include_once('player.php');
 include_once('comments.php');
 ?>
 
+</section>
 </main>
+
 
 <?php
 

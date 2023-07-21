@@ -2,7 +2,7 @@
     // Structure de base pour le bloc Playlist
 
     echo '<div class="playlist-block">';
-    echo '<h2 class= "playlistTitle">Playlists</h2>';
+    echo '<h2 class= "playlistTitle">Mes Playlists</h2>';
     echo '<div class="playlist-list">';
 
     // Formulaire de création de playlist
