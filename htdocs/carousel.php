@@ -26,7 +26,7 @@ $songs = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                                     <i class="fa-solid fa-plus" id="playlistAdd"></i> Playlist
                                                     </button>
                                                     <button type="button" class="btn btn-outline-warning btn-dark buttonAddToList col-5" value="inputToAddPlaylist">
-                                                        Lire ensuite
+                                                    <i class="fa-solid fa-plus" id="playlistAdd"></i> Lecture
                                                     </button>
                                                 </div>
                                             </div>
