@@ -5,7 +5,7 @@ $songs = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <div class="row col-12">
-<div class="container-fluid col-9">
+<div class="container-fluid col-md-9 col-12">
     <div class="row">
             <div id="songCarousel" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner" id="carousel-content">
