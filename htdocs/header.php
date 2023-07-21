@@ -114,4 +114,3 @@ if(isset($_SESSION['LOGGED_USER'])) {
 </script>
 
     </header>
-    <section class="backgroundColor">

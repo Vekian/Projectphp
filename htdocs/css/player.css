@@ -22,7 +22,7 @@
 }
 .player {
 	height: 140px;
-	width: 540px;
+	width: 780px;
 	background-color: rgb(30, 33, 37);
 	position: fixed;
 	-webkit-touch-callout: none;
@@ -30,7 +30,7 @@
 	-moz-user-select: none;
 	-ms-user-select: none;
 	user-select: none;
-	top: 90%;
+	top: 82%;
 	left: 21%;
 	transform: translate(-50%, -50%);
 	-webkit-transform: translate(-50%, -50%);
