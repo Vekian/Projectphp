@@ -116,7 +116,7 @@
     }
 </script>
 
-<div class="col-3">
+<div class="col-md-3 col 12">
             <?php 
             include 'playlist.php';
             ?>
