@@ -1,4 +1,4 @@
-<div id="sectionComments" class="border col-5 offset-7 ps-2">
+<div id="sectionComments" class="border col-md-5 offset-md-7 ps-2 col-12">
     <div class="row">
         <div id="displayComments">
         </div>

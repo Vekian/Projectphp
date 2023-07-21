@@ -1,4 +1,98 @@
-/* CSS pour le carrousel */
+@media screen and (max-width: 768px) {
+  main {
+    margin-bottom: 150px;
+  }
+
+  .carousel-inner {
+    overflow: hidden;
+  }
+  
+.carousel-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+  
+.card {
+    margin: 10px;
+  }
+  
+  .carousel-control-prev-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23f7bb32' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E") !important;
+   }
+   
+   .carousel-control-next-icon {
+     background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23f7bb32' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E") !important;
+   }
+
+    .carousel-control-prev-icon:before,
+    .carousel-control-next-icon:before {
+        display: none; /* Hide the default icons */
+    }
+
+    .carousel-control-prev,
+    .carousel-control-next {
+        width: 5%; /* Adjust the width to change the size of the controls */
+    }
+
+    .carousel-control-prev {
+        margin-left: -3%; /* Adjust the position as needed */
+    }
+
+    .carousel-control-next {
+        margin-right: -3%; /* Adjust the position as needed */
+    }
+  
+  .carousel-indicators {
+    bottom: -40px;
+  }
+  
+  .carousel-indicators li {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #00000080;
+    transition: background-color 0.3s;
+  }
+  
+  .carousel-indicators .active {
+    background-color: #000000cc;
+  }
+  
+  /* CSS pour les cartes audio */
+  .card-img-top {
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  .card-title {
+    margin-bottom: 0.5rem;
+  }
+  
+  .card-text {
+    margin-bottom: 0;
+  }
+
+  .card-body {
+    height: 180px;
+    background-color: rgb(120, 184, 245);
+  }
+
+  #buttonOfCard {
+    background-color: rgb(120, 184, 245);
+    padding-bottom : 20px;
+  }
+  #displayComments {
+    height : 200px;
+    display: flex;
+    align-items: center;
+  }
+
+
+}
+
+
 @media screen and (max-width: 1300px) {
 .carousel-inner {
     overflow: hidden;
@@ -87,3 +181,92 @@
     align-items: center;
   }
 }
+
+@media screen and (min-width: 1301px) {
+  .carousel-inner {
+      overflow: hidden;
+    }
+    
+  .carousel-item {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+    }
+    
+  .card {
+      margin: 10px;
+      margin-top : 60px;
+    }
+    
+    .carousel-control-prev-icon {
+      background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23f7bb32' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E") !important;
+     }
+     
+     .carousel-control-next-icon {
+       background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23f7bb32' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E") !important;
+     }
+  
+      .carousel-control-prev-icon:before,
+      .carousel-control-next-icon:before {
+          display: none; /* Hide the default icons */
+      }
+  
+      .carousel-control-prev,
+      .carousel-control-next {
+          width: 5%; /* Adjust the width to change the size of the controls */
+      }
+  
+      .carousel-control-prev {
+          margin-left: -3%; /* Adjust the position as needed */
+      }
+  
+      .carousel-control-next {
+          margin-right: -3%; /* Adjust the position as needed */
+      }
+    
+    .carousel-indicators {
+      bottom: -40px;
+    }
+    
+    .carousel-indicators li {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background-color: #00000080;
+      transition: background-color 0.3s;
+    }
+    
+    .carousel-indicators .active {
+      background-color: #000000cc;
+    }
+    
+    /* CSS pour les cartes audio */
+    .card-img-top {
+      height: 300px;
+      object-fit: cover;
+    }
+    
+    .card-title {
+      margin-bottom: 0.5rem;
+    }
+    
+    .card-text {
+      margin-bottom: 0;
+    }
+  
+    .card-body {
+      height: 327px;
+      background-color: rgb(120, 184, 245);
+    }
+  
+    #buttonOfCard {
+      background-color: rgb(120, 184, 245);
+      padding-bottom : 20px;
+    }
+    #displayComments {
+      height : 100px;
+      display: flex;
+      align-items: center;
+    }
+  }
