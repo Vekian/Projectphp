@@ -91,7 +91,6 @@
   }
 
   .backgroundColor {
-    
     background-color: #021631;
   }
 
@@ -99,6 +98,10 @@
     background-color: #000813;
   }
 
-   .navbar-brand {
-    color: white;
+  #searchInput{
+    margin-left: 5px;
+  }
+
+  #searchValue {
+    border-radius: 10px;
   }

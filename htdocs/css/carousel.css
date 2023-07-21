@@ -12,6 +12,7 @@
   
 .card {
     margin: 10px;
+    margin-top: 40px;
   }
   
   .carousel-control-prev-icon {
@@ -75,4 +76,6 @@
     background-color: rgb(120, 184, 245);
   }
 
-  
+#playlistAdd {
+  margin-right: 8px;
+}
