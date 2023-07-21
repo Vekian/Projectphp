@@ -23,7 +23,7 @@ $songs = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                                 <p class="card-text mb-5"><?php echo $song['artist']; ?></p>
                                                 <div id="buttonOfCard" >
                                                     <button type="button" class="btn btn-outline-warning btn-dark buttonAddPlaylist col-5" data-bs-toggle="modal" data-bs-target="#addPlaylistModal" value="inputToAddPlaylist">
-                                                        Add to playlist
+                                                    <i class="fa-solid fa-plus" id="playlistAdd"></i> Playlist
                                                     </button>
                                                     <button type="button" class="btn btn-outline-warning btn-dark buttonAddToList col-5" value="inputToAddPlaylist">
                                                         Lire ensuite

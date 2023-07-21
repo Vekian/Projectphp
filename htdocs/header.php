@@ -30,7 +30,7 @@ if(isset($_SESSION['LOGGED_USER'])) {
     <ul class="navbar-nav">
         <li class="nav-item">
             <form class="d-flex my-2 my-lg-0" action="#" method="POST">
-                <input class="mr-sm-2 bg-secondary text-light" id="searchValue" type="text" placeholder="Search" aria-label="Search">
+                <input class="mr-sm-2 bg-secondary text-light" id="searchValue" type="text" placeholder="Rechercher" aria-label="Rechercher">
                 <button class="btn btn-outline-warning me-4" id="searchInput" type="submit">Rechercher</button>
             </form>
         </li>
