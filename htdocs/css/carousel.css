@@ -27,7 +27,7 @@
     font-size: 20px;
     position: absolute;
     margin-top: 200px;
-    margin-left: 0px;
+
   }
   
   .carousel-control-prev:hover,
@@ -70,11 +70,10 @@
     margin-bottom: 0;
   }
 
-  #sectionComments {
-    margin-left: 65%;
-  }
+  
 
   .card-body {
     height : 150px;
   }
 
+  
