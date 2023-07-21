@@ -21,9 +21,9 @@ if(isset($_SESSION['LOGGED_USER'])) {
 </head>
 <body>
     <header>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg " id="navColor">
   <div class="container">
-    <a class="navbar-brand text-light" href="index.php">Spot'Isma</a>
+    <a class="navbar-brand text-light" href="index.php">Spot'Isma<i class="fa-solid fa-headphones-simple" id="musicIcon"></i></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -45,7 +45,7 @@ if(isset($_SESSION['LOGGED_USER'])) {
             }
             else {
                 echo('<li class="nav-item dropdown ml-5 " id="compte">
-                <a class="nav-link dropdown-toggle me-auto" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <a class="nav-link dropdown-toggle text-light me-auto" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   ' . $_SESSION['LOGGED_USER'] . '
                 </a>
                 <ul class="dropdown-menu dropdown-menu-dark bg-dark" aria-labelledby="navbarDarkDropdownMenuLink">');
@@ -114,3 +114,4 @@ if(isset($_SESSION['LOGGED_USER'])) {
 </script>
 
     </header>
+    <section class="backgroundColor">
