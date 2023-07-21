@@ -71,7 +71,8 @@
   }
 
   .card-body {
-    height : 400px;
-  }
+    height : 150px;
+    background-color: rgb(120, 184, 245);
+
 
   
