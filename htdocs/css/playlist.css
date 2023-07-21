@@ -3,6 +3,13 @@
   width: 100%;
   background-color: #021631;
  }
+
+ body {
+  background-color: #021631 !important;
+  height: 100%;
+ }
+
+
  
  /* Style pour les playlists */
 .playlist-block {
@@ -102,4 +109,10 @@
 
    .navbar-brand {
     color: white;
+  }
+
+  #displayComments {
+    height : 100px;
+    display: flex;
+    align-items: center;
   }

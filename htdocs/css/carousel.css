@@ -12,6 +12,7 @@
   
 .card {
     margin: 10px;
+    margin-top: 40px;
   }
   
   .carousel-control-prev-icon {
@@ -71,8 +72,11 @@
   }
 
   .card-body {
-    height : 150px;
+    height: 290px;
     background-color: rgb(120, 184, 245);
+  }
 
-
-  
+  #buttonOfCard {
+    background-color: rgb(120, 184, 245);
+    padding-bottom : 20px;
+  }

@@ -23,12 +23,13 @@
 
 
     <script>
+        let displayCom = document.getElementById('displayComments');
         let displayComment = document.getElementById('displayPostComments');
         if ("<?php echo(!isset($_SESSION['LOGGED_USER']))?>" == true){
-            displayComment.innerHTML = "<div class='text-light'>Veuillez vous connecter pour écrire un commentaire</div>";
+            displayCom.innerHTML = "<div class='text-light'>Veuillez vous connecter pour écrire un commentaire</div>";
         }
         else if (songId == "") {
-            displayComment.innerHTML = "<div class='text-light'>Veuillez choisir une chanson pour en voir les commentaires</div>";
+            displayCom.innerHTML = "<div class='text-light'>Veuillez choisir une chanson pour en voir les commentaires</div>";
         }
     </script>
     <div class="modal fade" id="commentModal" tabindex="-1" aria-labelledby="commentModalLabel" aria-hidden="true">
