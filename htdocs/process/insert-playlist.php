@@ -29,13 +29,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $stmt->execute();
 
-        header('Location: ../playlist.php');
+        header('Location: ../index.php');
         exit();
     } catch (Exception $e) {
         die('Erreur lors de l\'insertion de la playlist : ' . $e->getMessage());
     }
 } else {
-    header('Location: ../playlist.php');
+    header('Location: ../index.php');
     exit();
 }
 ?>

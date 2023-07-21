@@ -1,7 +1,9 @@
-<div id="sectionComments">
-    <div id="displayComments">
-    </div>
-    <div id="displayPostComments">
+<div id="sectionComments" class="border col-5 offset-7 ps-2">
+    <div class="row">
+        <div id="displayComments">
+        </div>
+        <div id="displayPostComments" >
+        </div>
     </div>
     <div class="modal fade" id="listCommentModal" tabindex="-1" aria-labelledby="listCommentModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -48,6 +50,7 @@
         </div>
     </div>
 </div>
+    </div>
 <script>
     let submitComment = document.getElementById('submitComment');
     submitComment.addEventListener('click', function(e) {
@@ -75,9 +78,10 @@
             }
             else {
             document.getElementById("listeOfComments").innerHTML = "";
+            displayComment.innerHTML += '<button type="button" class="btn btn-outline-warning btn-dark col-8" data-bs-toggle="modal" data-bs-target="#listCommentModal">Voir plus de commentaires</button>';
             for (let comment of data) {
-                sectionComments.innerHTML = comment.name + " a écrit : " + comment.content + '  <button type="button" class="btn btn-outline-warning btn-dark col-4" data-bs-toggle="modal" data-bs-target="#listCommentModal">Voir plus de commentaires</button>';
-            document.getElementById("listeOfComments").innerHTML += comment.name + " a écrit : " + comment.content +"<br />";
+                sectionComments.innerHTML = "<div class='col-12'>" + comment.name + " a écrit : " + comment.content + '  </div>';
+                document.getElementById("listeOfComments").innerHTML += "<div class='border p-2'>" + comment.name + " a écrit : " + comment.content + "</div><br />";
             }}
         })
     }
@@ -110,3 +114,10 @@
         });
     }
 </script>
+
+<div class="col-3">
+            <?php 
+            include 'playlist.php';
+            ?>
+</div>
+</div>

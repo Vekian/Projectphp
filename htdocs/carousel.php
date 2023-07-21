@@ -4,9 +4,9 @@ $stmt = $baseSpotisma->query('SELECT * FROM songs');
 $songs = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
-<div class="container-fluid">
+<div class="row col-12">
+<div class="container-fluid col-9">
     <div class="row">
-        <div class="col-9">
             <div id="songCarousel" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner" id="carousel-content">
                     <?php $totalSongs = count($songs); ?>
@@ -21,7 +21,7 @@ $songs = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                             <div class="card-body">
                                                 <h5 class="card-title"><?php echo $song['nameSong']; ?></h5>
                                                 <p class="card-text"><?php echo $song['artist']; ?></p>
-                                                <button type="button" class="btn btn-outline-warning btn-dark buttonAddPlaylist" data-bs-toggle="modal" data-bs-target="#addPlaylistModal">
+                                                <button type="button" class="btn btn-outline-warning btn-dark buttonAddPlaylist" data-bs-toggle="modal" data-bs-target="#addPlaylistModal" value="inputToAddPlaylist">
                                                     Add to playlist
                                                 </button>
                                             </div>
@@ -42,15 +42,8 @@ $songs = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <span class="sr-only">Next</span>
                 </a>
             </div>
-        </div>
-
-        <div class="col-3">
-            <?php 
-            include 'playlist.php';
-            ?>
-        </div>
     </div>
-</div>
+
 
 
 <script>
@@ -76,13 +69,14 @@ $songs = $stmt->fetchAll(PDO::FETCH_ASSOC);
 </script>
 
 <?php
+    if(isset($_SESSION['LOGGED_USER'])) {
     $nameUser = $_SESSION['LOGGED_USER'];
     $stmt = $baseSpotisma->query('SELECT id FROM users WHERE name = "' . $nameUser . '"');
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
     $idUser =  $user['id'];
 
     $stmtPlaylists = $baseSpotisma->query('SELECT * FROM playlists WHERE id_user = "' . $idUser . '"');
-    $playlistsData = $stmtPlaylists->fetchAll(PDO::FETCH_ASSOC);
+    $playlistsData = $stmtPlaylists->fetchAll(PDO::FETCH_ASSOC);}
 ?>
 
 <div class="modal fade" id="addPlaylistModal" tabindex="-1" aria-labelledby="addPlaylistModalLabel" aria-hidden="true">
@@ -110,5 +104,3 @@ $songs = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </div>
     </div>
 </div>
-
-

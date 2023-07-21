@@ -1,7 +1,4 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700);
-body {
-	background-color: rgb(138, 135, 135);
-}
 #artist {
 	font-family: 'Open Sans', sans-serif;
 	font-size: 13pt;
@@ -25,7 +22,7 @@ body {
 }
 .player {
 	height: 140px;
-	width: 550px;
+	width: 540px;
 	background-color: rgb(30, 33, 37);
 	position: fixed;
 	-webkit-touch-callout: none;
@@ -34,7 +31,7 @@ body {
 	-ms-user-select: none;
 	user-select: none;
 	top: 85%;
-	left: 22%;
+	left: 21%;
 	transform: translate(-50%, -50%);
 	-webkit-transform: translate(-50%, -50%);
 	border-radius: 5px;

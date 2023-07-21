@@ -38,7 +38,7 @@ if (isset($_SESSION['LOGGED_USER'])) {
         // Afficher les chansons de la playlist dans une liste déroulante
         echo '<ul id="playlist-songs-' . $playlistId . '" style="display:none;">';
         foreach ($songs as $song) {
-            echo '<li>' . $song['song_name'] . ' - ' . $song['album_name'];
+            echo '<li><button type="button" class="btn btn-outline-warning btn-dark col-10 buttonPlaylist" value="'. $song['song_id'] . '">' . $song['song_name'] . ' - ' . $song['album_name'] . '</button>';
             echo ' <form action="/process/remove-song-from-playlist.php" method="POST" style="display: inline;">';
             echo '<input type="hidden" name="playlist_id" value="' . $playlistId . '">';
             echo '<input type="hidden" name="song_id" value="' . $song['song_id'] . '">';
@@ -52,6 +52,17 @@ if (isset($_SESSION['LOGGED_USER'])) {
     }
 }
 ?>
+<script>
+    let buttonsPlaylist = document.getElementsByClassName('buttonPlaylist');
+    for (let buttonPlaylist of buttonsPlaylist) {
+        buttonPlaylist.addEventListener('click', function (e) {
+            songId = e.target.value;
+            playMusic(songId);
+            getComments(songId);
+            displayComment.innerHTML = '<button type="button" class="btn btn-outline-warning btn-dark col-4" data-bs-toggle="modal" data-bs-target="#commentModal">Un ptit com\' ?</button></div>';
+        });
+    }
+</script>
 
 <script src="js/playlist.js"></script>
 
