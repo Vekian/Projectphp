@@ -70,10 +70,9 @@
     margin-bottom: 0;
   }
 
-  
-
   .card-body {
     height : 150px;
+    background-color: rgb(120, 184, 245);
   }
 
   
