@@ -5,7 +5,7 @@ $songs = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <div class="row col-12">
-<div class="container-fluid col-9">
+<div class="container-fluid col-md-9 col-12">
     <div class="row">
             <div id="songCarousel" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner" id="carousel-content">
@@ -22,11 +22,11 @@ $songs = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                                 <h5 class="card-title "><?php echo $song['nameSong']; ?></h5>
                                                 <p class="card-text mb-xxl-5 mb-2"><?php echo $song['artist']; ?></p>
                                                 <div id="buttonOfCard" >
-                                                    <button type="button" class="btn btn-outline-warning btn-dark buttonAddPlaylist col-4" data-bs-toggle="modal" data-bs-target="#addPlaylistModal" value="inputToAddPlaylist">
-                                                        Add to playlist
+                                                    <button type="button" class="btn btn-outline-warning btn-dark buttonAddPlaylist col-5" data-bs-toggle="modal" data-bs-target="#addPlaylistModal" value="inputToAddPlaylist">
+                                                    <i class="fa-solid fa-plus" id="playlistAdd"></i> Playlist
                                                     </button>
-                                                    <button type="button" class="btn btn-outline-warning btn-dark buttonAddToList col-4" value="inputToAddPlaylist">
-                                                        Lire ensuite
+                                                    <button type="button" class="btn btn-outline-warning btn-dark buttonAddToList col-5" value="inputToAddPlaylist">
+                                                    <i class="fa-solid fa-plus" id="playlistAdd"></i> Lecture
                                                     </button>
                                                 </div>
                                             </div>
