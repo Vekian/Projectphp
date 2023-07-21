@@ -1,4 +1,5 @@
 /* CSS pour le carrousel */
+@media screen and (max-width: 1300px) {
 .carousel-inner {
     overflow: hidden;
   }
@@ -12,7 +13,6 @@
   
 .card {
     margin: 10px;
-    margin-top: 40px;
   }
   
   .carousel-control-prev-icon {
@@ -59,7 +59,7 @@
   
   /* CSS pour les cartes audio */
   .card-img-top {
-    height: 300px;
+    height: 200px;
     object-fit: cover;
   }
   
@@ -72,7 +72,7 @@
   }
 
   .card-body {
-    height: 290px;
+    height: 180px;
     background-color: rgb(120, 184, 245);
   }
 
@@ -80,3 +80,10 @@
     background-color: rgb(120, 184, 245);
     padding-bottom : 20px;
   }
+  #displayComments {
+    height : 100px;
+    display: flex;
+    align-items: center;
+  }
+}
+  

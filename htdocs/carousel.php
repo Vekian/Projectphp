@@ -20,7 +20,7 @@ $songs = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                             <img src="<?php echo $song['cover']; ?>" class="card-img-top" alt="Cover">
                                             <div class="card-body d-flex flex-column text-center justify-content-center">
                                                 <h5 class="card-title "><?php echo $song['nameSong']; ?></h5>
-                                                <p class="card-text mb-5"><?php echo $song['artist']; ?></p>
+                                                <p class="card-text mb-xxl-5 mb-2"><?php echo $song['artist']; ?></p>
                                                 <div id="buttonOfCard" >
                                                     <button type="button" class="btn btn-outline-warning btn-dark buttonAddPlaylist col-5" data-bs-toggle="modal" data-bs-target="#addPlaylistModal" value="inputToAddPlaylist">
                                                         Add to playlist
