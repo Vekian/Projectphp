@@ -58,7 +58,7 @@
   
   /* CSS pour les cartes audio */
   .card-img-top {
-    height: 200px;
+    height: 300px;
     object-fit: cover;
   }
   
@@ -70,10 +70,8 @@
     margin-bottom: 0;
   }
 
-  
-
   .card-body {
-    height : 150px;
+    height : 400px;
   }
 
   
