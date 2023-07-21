@@ -27,8 +27,6 @@ if (response.ok) {
 })
 }                
 
-
-
 var playlist = [
 	{
 		"song"    : "Sélectionner une chanson",

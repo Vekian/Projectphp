@@ -24,6 +24,9 @@ $songs = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                                 <button type="button" class="btn btn-outline-warning btn-dark buttonAddPlaylist" data-bs-toggle="modal" data-bs-target="#addPlaylistModal" value="inputToAddPlaylist">
                                                     Add to playlist
                                                 </button>
+                                                <button type="button" class="btn btn-outline-warning btn-dark buttonAddToList" value="inputToAddPlaylist">
+                                                    Lire ensuite
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
@@ -32,7 +35,6 @@ $songs = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         </div>
                     <?php endfor; ?>
                 </div>
-
                 <a class="carousel-control-prev" href="#songCarousel" role="button" data-bs-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="sr-only">Previous</span>
@@ -56,6 +58,30 @@ $songs = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 if (e.target.value === "inputToAddPlaylist") {
                     e.stopPropagation();
                     document.getElementById('idSongInput').value = songId;
+                    if (e.target.classList.contains('buttonAddToList')) {
+                        fetch('process/playMusic.php', {
+                            method: "POST",
+                            body: JSON.stringify(songId)
+                            }
+                        )
+                        .then(function(response) {
+                        if (response.ok) {
+                            return response.json();
+                        } else {
+                            throw new Error('Erreur lors de la requête AJAX');
+                        }
+                        })
+                        .then(function(data) {
+                            let objetSong = {
+                            "song" : data.nameSong,
+                            "album" : data.nameAlbum,
+                            "artist" : data.artist,
+                            "artwork" : data.cover,
+                            "mp3" : data.file
+                            }
+                            playlist.push(objetSong);
+                        })
+                    }
                 }
                 else {
                 playMusic(songId);
@@ -64,7 +90,6 @@ $songs = $stmt->fetchAll(PDO::FETCH_ASSOC);
             }});
         });
     });
-    
     
 </script>
 

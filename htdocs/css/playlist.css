@@ -10,7 +10,7 @@
     background-color: #021631;
     border: 2px solid #ffc107;
     padding: 2px;
-    
+    border-radius: 0% 0% 5% 0%;
 }
 
 .playlistTitle {
@@ -70,6 +70,7 @@
     border: none;
     cursor: pointer;
     font-size: 18px;
+    color : grey;
   }
   
   #trashBtn:hover {
