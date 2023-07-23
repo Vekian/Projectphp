@@ -14,12 +14,14 @@
  /* Style pour les playlists */
 .playlist-block {
     width : 100%;
-    height : 100%;
+    
     background-color: #021631;
     border: 2px solid #ffc107;
     padding: 2px;
     border-radius: 0% 0% 5% 0%;
+    overflow : scroll;
 }
+
 
 .playlistTitle {
      font-size: 35px;
@@ -35,6 +37,8 @@
      display: flex;
      justify-content: center;
      color: white;
+     max-height:100%;
+overflow:scroll;
 }
 
 .playlist-item {

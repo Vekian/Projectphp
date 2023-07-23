@@ -6,3 +6,4 @@ function toggleSongs(playlistId) {
       playlistSongs.style.display = 'none';
     }
   }
+  
