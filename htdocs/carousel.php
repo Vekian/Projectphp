@@ -1,41 +1,19 @@
 <?php
 // Récupération des données des chansons depuis la base de données
-$stmt = $baseSpotisma->query('SELECT * FROM songs');
-$songs = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$stmt = $baseSpotisma->query('SELECT * FROM albums 
+                                JOIN songs ON albums.id = songs.id_album');
+    $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $jsonAnswer = json_encode($results);
+
+echo '<script> var songs = ' . $jsonAnswer . '; </script>'
 ?>
 
 <div class="row col-12">
-<div class="container-fluid col-md-9 col-12">
+<div class="container-fluid col-md-9 col-12 mainElement">
     <div class="row">
-            <div id="songCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div id="songCarousel" class="carousel slide mx-auto" data-bs-ride="carousel">
                 <div class="carousel-inner" id="carousel-content">
-                    <?php $totalSongs = count($songs); ?>
-                    <?php for ($i = 0; $i < $totalSongs; $i += 3) : ?>
-                        <div class="carousel-item <?php if ($i === 0) echo 'active'; ?>">
-                            <div class="row">
-                                <?php for ($j = $i; $j < min($i + 3, $totalSongs); $j++) : ?>
-                                    <?php $song = $songs[$j]; ?>
-                                    <div class="col-md-4">
-                                        <div class="card" data-id="<?php echo $song['id']; ?>">
-                                            <img src="<?php echo $song['cover']; ?>" class="card-img-top" alt="Cover">
-                                            <div class="card-body d-flex flex-column text-center justify-content-center">
-                                                <h5 class="card-title "><?php echo $song['nameSong']; ?></h5>
-                                                <p class="card-text mb-xxl-5 mb-2"><?php echo $song['artist']; ?></p>
-                                                <div id="buttonOfCard" >
-                                                    <button type="button" class="btn btn-outline-warning btn-dark buttonAddPlaylist col-5" data-bs-toggle="modal" data-bs-target="#addPlaylistModal" value="inputToAddPlaylist">
-                                                    <i class="fa-solid fa-plus" id="playlistAdd"></i> Playlist
-                                                    </button>
-                                                    <button type="button" class="btn btn-outline-warning btn-dark buttonAddToList col-5" value="inputToAddPlaylist">
-                                                    <i class="fa-solid fa-plus" id="playlistAdd"></i> Lecture
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                <?php endfor; ?>
-                            </div>
-                        </div>
-                    <?php endfor; ?>
+                    
                 </div>
                 <a class="carousel-control-prev" href="#songCarousel" role="button" data-bs-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -51,6 +29,14 @@ $songs = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 
 <script>
+    <?php require_once("js/search.js");?>
+    window.addEventListener("resize", function() {
+        location.reload();
+        height = window.innerHeight;
+        playlistBlock = document.getElementsByClassName("playlist-block");
+        playlistBlock[0].style.height = (height - 50) + "px";
+    });
+    generateCarouselContent(songs);
     let songId = "";
     document.addEventListener("DOMContentLoaded", function() {
         let cards = document.querySelectorAll(".card");
@@ -88,7 +74,12 @@ $songs = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 else {
                 playMusic(songId);
                 getComments(songId);
+                if ("<?php echo(!isset($_SESSION['LOGGED_USER']))?>" == true){
+                    displayCom.innerHTML = "<div class='text-light'>Veuillez vous connecter pour écrire un commentaire</div>";
+                }
+                else {
                 displayComment.innerHTML = '<button type="button" class="btn btn-outline-warning btn-dark col-4" data-bs-toggle="modal" data-bs-target="#commentModal">Un ptit com\' ?</button></div>';
+                };
             }});
         });
     });
@@ -111,12 +102,12 @@ $songs = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <div class="modal-content bg-dark text-light">
             <div class="modal-header">
                 <h1 class="modal-title fs-5" id="addPlaylistModalLabel">Ajouter à une playlist</h1>
-                <button type="button" class="btn-close bg-dark" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="process/insertSongPlaylist.php" method="POST">
-                    <label for="namePlaylist">Choisissez votre playlist</label>
-                    <select id="namePlaylist" name="namePlaylist">
+                <form action="process/insertSongPlaylist.php" method="POST" class="text-center">
+                    <label for="namePlaylist">Choisissez votre playlist </label>
+                    <select id="namePlaylist" class="bg-dark text-light" name="namePlaylist">
                     <?php
                         foreach($playlistsData as $playlistData) {
                             echo('<option value="'. $playlistData['id'] . '"> ' . $playlistData["name"] .'</option>');
@@ -125,7 +116,7 @@ $songs = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     </select>
                     <input type="hidden" name="idSong" id="idSongInput" value="">
                     <input type="hidden" name="idUser" value="<?php echo($idUser) ?>">
-                    <input type="submit" value="envoyer">
+                    <input type="submit" class="btn btn-outline-warning btn-dark" value="envoyer">
                 </form>
             </div>
         </div>

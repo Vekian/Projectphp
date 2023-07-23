@@ -25,73 +25,7 @@ function search() {
             document.getElementById('carousel-content').innerHTML = "Aucune chanson ne correspond à cette recherche";
         }
         else{
-        // Supprimer le contenu existant du conteneur "carousel-content"
-    document.getElementById('carousel-content').innerHTML = "";
-
-    // Supposons que vous ayez une variable "songs" qui contient les données des chansons comme dans PHP
-    // Exemple : var songs = [{id: 1, cover: 'url_de_la_pochette', nameSong: 'Titre1', artist: 'Artiste1'}, {id: 2, cover: 'url_de_la_pochette', nameSong: 'Titre2', artist: 'Artiste2'}, ...];
-
-    // Compter le nombre total de chansons
-    var totalSongs = songs.length;
-
-    // Parcourir les chansons en groupes de 3 pour créer les éléments HTML dynamiquement
-    for (var i = 0; i < totalSongs; i += 3) {
-        var carouselItem = document.createElement('div');
-        carouselItem.className = "carousel-item" + (i === 0 ? " active" : "");
-
-        var row = document.createElement('div');
-        row.className = "row col-10 offset-1";
-
-        // Boucler pour créer les éléments "col-md-4" et remplir avec les données des chansons
-        for (var j = i; j < Math.min(i + 3, totalSongs); j++) {
-            var song = songs[j];
-
-            var colMd4 = document.createElement('div');
-            colMd4.className = "col-md-4";
-
-            var card = document.createElement('div');
-            card.className = "card";
-            card.setAttribute('data-id', song.id);
-
-            var img = document.createElement('img');
-            img.className = "card-img-top";
-            img.src = song.cover;
-            img.alt = "Cover";
-
-            var cardBody = document.createElement('div');
-            cardBody.className = "card-body";
-
-            var cardTitle = document.createElement('h5');
-            cardTitle.className = "card-title";
-            cardTitle.textContent = song.nameSong;
-
-            var cardText = document.createElement('p');
-            cardText.className = "card-text";
-            cardText.textContent = song.artist;
-
-            var button = document.createElement('button');
-            button.type = "button";
-            button.className = "btn btn-outline-warning btn-dark buttonAddPlaylist";
-            button.setAttribute('data-bs-toggle', 'modal');
-            button.setAttribute('data-bs-target', '#addPlaylistModal');
-            button.textContent = "Add to playlist";
-
-            cardBody.appendChild(cardTitle);
-            cardBody.appendChild(cardText);
-            cardBody.appendChild(button);
-
-            card.appendChild(img);
-            card.appendChild(cardBody);
-
-            colMd4.appendChild(card);
-            row.appendChild(colMd4);
-        }
-
-        carouselItem.appendChild(row);
-
-        // Ajouter le carouselItem au conteneur "carousel-content"
-        document.getElementById('carousel-content').appendChild(carouselItem);
-    }
+              generateCarouselContent(songs);
         let cards = document.querySelectorAll(".card");
         cards.forEach(function(card) {
             card.addEventListener("click", function() {
@@ -104,3 +38,57 @@ function search() {
     }});
 }
 
+function createSongCard(song) {
+    return `
+      <div class="col-md-4">
+        <div class="card" data-id="${song.id}">
+          <img src="${song.cover}" class="card-img-top" alt="Cover">
+          <div class="card-body d-flex flex-column text-center justify-content-center">
+            <h5 class="card-title">${song.nameSong}</h5>
+            <p class="card-text mb-xxl-5 mb-2">${song.artist}</p>
+            <div id="buttonOfCard">
+              <button type="button" class="btn btn-outline-warning btn-dark buttonAddPlaylist col-5" data-bs-toggle="modal" data-bs-target="#addPlaylistModal" value="inputToAddPlaylist">
+                <i class="fa-solid fa-plus" id="playlistAdd"></i> Playlist
+              </button>
+              <button type="button" class="btn btn-outline-warning btn-dark buttonAddToList col-5" value="inputToAddPlaylist">
+                <i class="fa-solid fa-plus" id="playlistAdd"></i> Lecture
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  // Function to generate the carousel content
+  function generateCarouselContent(songs) {
+    const carouselContent = document.getElementById("carousel-content");
+    let totalSongs = songs.length;
+    let html = "";
+    let windowWidth = window.innerWidth;
+    
+
+    if (windowWidth < 768) {
+      for (let i = 0; i < totalSongs; i += 1) {
+        html += `<div class="carousel-item ${i === 0 ? 'active' : ''}"><div class="row">`;
+  
+        for (let j = i; j < Math.min(i + 1, totalSongs); j++) {
+          html += createSongCard(songs[j]);
+        }
+  
+        html += "</div></div>";
+      }
+    }
+    else {
+    for (let i = 0; i < totalSongs; i += 3) {
+      html += `<div class="carousel-item ${i === 0 ? 'active' : ''}"><div class="row">`;
+
+      for (let j = i; j < Math.min(i + 3, totalSongs); j++) {
+        html += createSongCard(songs[j]);
+      }
+
+      html += "</div></div>";
+    }}
+
+    carouselContent.innerHTML = html;
+  }

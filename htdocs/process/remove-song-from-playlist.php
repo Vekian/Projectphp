@@ -16,19 +16,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $stmt->execute();
 
             // Rediriger vers la page de playlist après la suppression
-            header('Location: ../tracks.php');
+            header('Location: ../index.php');
             exit();
         } catch (Exception $e) {
             die('Erreur lors de la suppression de la chanson de la playlist : ' . $e->getMessage());
         }
     } else {
         // Rediriger vers la page de playlist si les données nécessaires ne sont pas présentes
-        header('Location: ../tracks.php');
+        header('Location: ../index.php');
         exit();
     }
 } else {
     // Rediriger vers la page de playlist si le formulaire n'a pas été soumis
-    header('Location: ../tracks.php');
+    header('Location: ../index.php');
     exit();
 }
 ?>
