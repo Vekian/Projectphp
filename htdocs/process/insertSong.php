@@ -45,9 +45,6 @@ if (isset($_FILES['cover']) AND $_FILES['cover']['error'] == 0)
         $nameSong = $_POST['nameSong' . $i];
         $file = '/musics/' . basename($_FILES['music' . $i]['name']);
         $artist = $_POST['artist' . $i];
-        echo $nameSong;
-        echo $artist;
-        echo $file;
         $insertSong = $baseSpotisma -> prepare ('INSERT INTO songs(nameSong, file, cover, artist, id_album) VALUES (:nameSong, :file, :cover, :artist, :id_album)');
         $insertSong -> execute([
         'nameSong' => $nameSong,
@@ -57,3 +54,4 @@ if (isset($_FILES['cover']) AND $_FILES['cover']['error'] == 0)
         'id_album' => $album
     ]);
 }}
+header('Location:index.php');
