@@ -10,7 +10,7 @@
             <div class="modal-content bg-dark text-light">
                 <div class="modal-header">
                     <h1 class="modal-title fs-5" id="listCommentModalLabel">Tous les commentaires</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body" id="listeOfComments">
                     
@@ -37,7 +37,7 @@
             <div class="modal-content bg-dark text-light">
                 <div class="modal-header">
                     <h1 class="modal-title fs-5" id="commentModalLabel">Ecrivez un ptit commentaire</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <form action="process-comment.php" method="POST" class="d-flex flex-column" id="postComment">
@@ -79,7 +79,12 @@
             }
             else {
             document.getElementById("listeOfComments").innerHTML = "";
-            displayComment.innerHTML += '<button type="button" class="btn btn-outline-warning btn-dark col-8" data-bs-toggle="modal" data-bs-target="#listCommentModal">Voir plus de commentaires</button>';
+            if ("<?php echo(!isset($_SESSION['LOGGED_USER']))?>" == true){
+            displayComment.innerHTML = '<button type="button" class="btn btn-outline-warning btn-dark col-8" data-bs-toggle="modal" data-bs-target="#listCommentModal">Voir plus de commentaires</button>';
+            }
+            else {
+                displayComment.innerHTML += '<button type="button" class="btn btn-outline-warning btn-dark col-8" data-bs-toggle="modal" data-bs-target="#listCommentModal">Voir plus de commentaires</button>';
+            }
             for (let comment of data) {
                 sectionComments.innerHTML = "<div class='col-12 text-light'>" + comment.name + " a écrit : " + comment.content + '  </div>';
                 document.getElementById("listeOfComments").innerHTML += "<div class='border p-2'>" + comment.name + " a écrit : " + comment.content + "</div><br />";
@@ -116,9 +121,3 @@
     }
 </script>
 
-<div class="col-md-3 col 12">
-            <?php 
-            include 'playlist.php';
-            ?>
-</div>
-</div>

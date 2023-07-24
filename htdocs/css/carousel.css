@@ -1,8 +1,37 @@
 @media screen and (max-width: 768px) {
+  .card:hover {
+    background-color: rgb(216, 197, 22); /* Couleur de fond plus claire et semi-transparente */
+    transition: background-color 0.3s; /* Durée de la transition */
+    transform: scale(1.02);
+    box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+  }
+  .card:active {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+  }
+  
+  /* Ou ajoutez une couleur de fond lorsqu'on clique sur une card */
+  .card:active {
+    background-color: rgba(120, 184, 245, 0.8);
+    top: 3px;
+  }
+  .row {
+    --bs-gutter-x: 0 !important;
+  }
+
+  #navColorPlaylist{
+    position: fixed;
+    bottom: 50%; /* Ajustez la valeur selon votre préférence pour la distance verticale par rapport au bas de la fenêtre */
+    left: 20px; /* Ajustez la valeur selon votre préférence pour la distance par rapport au bord gauche de la fenêtre */
+    width: 200px; /* Ajustez la largeur du bouton selon votre préférence */
+    transform: translateY(50%); /* Déplace le bouton de 50% de sa hauteur vers le haut pour le centrer verticalement */
+    z-index: 999; /* Assurez-vous que le bouton est en avant-plan par rapport aux autres éléments */
+  }
   main {
     margin-bottom: 150px;
   }
-
+  #searchValue {
+    width : 50%;
+  }
   .carousel-inner {
     overflow: hidden;
   }
@@ -16,6 +45,7 @@
   
 .card {
     margin: 10px;
+    transition: 0.3s transform;
   }
   
   .carousel-control-prev-icon {
@@ -88,12 +118,34 @@
     display: flex;
     align-items: center;
   }
-
+  .card:active {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+  }
+  
+  /* Ou ajoutez une couleur de fond lorsqu'on clique sur une card */
+  .card:active {
+    background-color: rgba(120, 184, 245, 0.8);
+  }
 
 }
 
 
 @media screen and (max-width: 1300px) {
+  .card:hover {
+    background-color: rgb(216, 197, 22); /* Couleur de fond plus claire et semi-transparente */
+    transition: background-color 0.3s; /* Durée de la transition */
+    transform: scale(1.02);
+    box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+  }
+  .card:active {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+  }
+  
+  /* Ou ajoutez une couleur de fond lorsqu'on clique sur une card */
+  .card:active {
+    background-color: rgba(120, 184, 245, 0.8);
+    top: 3px;
+  }
 .carousel-inner {
     overflow: hidden;
   }
@@ -107,6 +159,7 @@
   
 .card {
     margin: 10px;
+    transition: 0.3s transform;
   }
   
   .carousel-control-prev-icon {
@@ -183,6 +236,21 @@
 }
 
 @media screen and (min-width: 1301px) {
+  .card:hover {
+    background-color: rgb(216, 197, 22); /* Couleur de fond plus claire et semi-transparente */
+    transition: background-color 0.3s; /* Durée de la transition */
+    transform: scale(1.02);
+    box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+  }
+  .card:active {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+  }
+  
+  /* Ou ajoutez une couleur de fond lorsqu'on clique sur une card */
+  .card:active {
+    background-color: rgba(120, 184, 245, 0.8);
+    top: 3px;
+  }
   .carousel-inner {
       overflow: hidden;
     }
@@ -197,6 +265,7 @@
   .card {
       margin: 10px;
       margin-top : 60px;
+      transition: 0.3s transform;
     }
     
     .carousel-control-prev-icon {
@@ -268,5 +337,13 @@
       height : 100px;
       display: flex;
       align-items: center;
+    }
+    .card:active {
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+    }
+    
+    /* Ou ajoutez une couleur de fond lorsqu'on clique sur une card */
+    .card:active {
+      background-color: rgba(120, 184, 245, 0.8);
     }
   }
