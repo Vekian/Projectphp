@@ -52,7 +52,7 @@ if(isset($_SESSION['LOGGED_USER'])) {
                 </a>
                 <ul class="dropdown-menu dropdown-menu-dark bg-dark" aria-labelledby="navbarDarkDropdownMenuLink">');
                     if($idAdmin === 1) {
-                        echo('<li><a class="dropdown-item text-light" href="#" data-bs-toggle="modal" data-bs-target="#addSongModal">Ajouter une musique</a></li>');
+                        echo('<li><a class="dropdown-item text-light" href="#" data-bs-toggle="modal" data-bs-target="#addSongModal">Ajouter musique</a></li>');
                     };
                 echo('<li><a class="dropdown-item text-light" href="process/logout.php">Se déconnecter</a></h4></li></li>
                 </ul>
